@@ -3,52 +3,223 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scott's Barbers – Premium Barbershop in Limerick</title>
-  <meta name="description" content="Scott's Barbers – Limerick's premium barbershop. Expert haircuts, shaves & beard trims. Walk-ins welcome. Call +353 85 224 0444 or book online." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <title>Saffron & Spice – Premium Indian Dining</title>
+  <meta name="description" content="Saffron & Spice – Limerick's premium Indian dining experience. Authentic tandoori specialties, hand-ground spices, and elegant modern cuisine. Order online or book a table." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
+    <div class="container nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="assets/logo.png" alt="Scott's Barbers Logo" class="logo-img" />
+        Saffron<span>& Spice</span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">Heritage</a></li>
+        <li><a href="#menu">Menu</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="tel:+353852240444" class="btn btn-outline" id="nav-call-btn">📞 Call Now</a>
-        <button class="btn btn-primary" id="nav-book-btn" onclick="openBookingModal()">Book Now</button>
+      <div class="nav-actions">
+        <button class="nav-cart-btn" id="navCartBtn" aria-label="View Shopping Cart">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="btn btn-gold" onclick="openBooking()">Book a Table</button>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- BOOKING MODAL -->
-  <div class="modal-overlay" id="bookingModal" onclick="closeBookingModalOutside(event)">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeBookingModal()" id="modal-close-btn" aria-label="Close">✕</button>
-      <div class="modal-header">
-        <img src="assets/logo.png" alt="Logo" class="modal-logo" />
-        <h2>Book an Appointment</h2>
-        <p>Fill in your details and we'll confirm your slot.</p>
+  <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+  <section class="hero" id="home">
+    <div class="hero-video-container">
+      <video class="hero-video" autoplay loop muted playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-cooking-in-a-pot-close-up-4638-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✨ Royal Indian Gastronomy</div>
+      <h1 class="hero-title">Saffron &<br/><span>Spice</span></h1>
+      <p class="hero-sub">A symphony of authentic tandoori fire, hand-ground spices, and luxurious modern Indian dining.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="openCart()">Order Online</button>
+        <button class="btn btn-gold" onclick="openBooking()">Reserve Table</button>
+        <a href="tel:+353852240444" class="btn btn-outline">📞 Call Now</a>
       </div>
-      <form class="booking-form" id="bookingForm">
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT HERITAGE SECTION -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-content">
+        <span class="section-tag">Our Story</span>
+        <h3>A Legacy of <span>Clay Ovens & Rare Spices</span></h3>
+        <p>At Saffron & Spice, we craft an immersive dining experience that honors centuries of culinary tradition. Our master chefs prepare each dish utilizing custom tandoors (traditional clay ovens) that reach temperatures over 400°C, locking in smoky complexity and tender juices.</p>
+        <p>Every single blend of spice is ground in-house, ensuring an unparalleled depth of aroma and flavor that standard commercial ingredients can never replicate.</p>
+        <div class="about-features">
+          <div class="about-feature-card">
+            <div class="af-icon">🪔</div>
+            <h4>Smoky Tandoor</h4>
+            <p>Searing skewers and fresh naans baked on hot clay walls.</p>
+          </div>
+          <div class="about-feature-card">
+            <div class="af-icon">🌶️</div>
+            <h4>Hand-Ground</h4>
+            <p>Our spices are freshly ground daily for maximum fragrance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-stack">
+        <img src="assets/indian_restaurant_interior.png" alt="Saffron & Spice elegant dining hall" class="about-img-main" />
+        <img src="assets/tandoori_platter.png" alt="Sizzling tandoori delicacies" class="about-img-overlap" />
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE MENU SECTION -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Cuisine</span>
+        <h2>Explore Our <span>Culinary Canvas</span></h2>
+        <p>Select a category below to explore our menus and add dishes directly to your online order.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="menu-categories" id="menuCategories">
+        <button class="menu-tab active" data-category="all">All Dishes</button>
+        <button class="menu-tab" data-category="appetizers">Appetizers</button>
+        <button class="menu-tab" data-category="tandoor">Tandoor & Mains</button>
+        <button class="menu-tab" data-category="specials">Chef Specials</button>
+        <button class="menu-tab" data-category="breads">Breads & Sides</button>
+        <button class="menu-tab" data-category="drinks">Drinks</button>
+      </div>
+
+      <!-- Menu Items Grid -->
+      <div class="menu-grid" id="menuGrid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & LOCATION -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info-block">
+        <span class="section-tag">Find Us</span>
+        <h2>Experience <span>Saffron & Spice</span></h2>
+        <p class="desc">Visit us for lunch or dinner, or call to make large group party bookings.</p>
+        <div class="contact-details">
+          <div class="cd-item">
+            <div class="cd-icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <p>Unit 2, Ashdown Centre, Courtbrack Ave,<br/>Limerick, V94 90P0, Ireland</p>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">📞</div>
+            <div>
+              <strong>Reservations & Enquiries</strong>
+              <p><a href="tel:+353852240444">+353 85 224 0444</a></p>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">🕐</div>
+            <div>
+              <strong>Operating Hours</strong>
+              <p>Monday – Saturday: 12:00pm – 10:30pm<br/>Sunday: 1:00pm – 10:00pm</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-btns">
+          <a href="tel:+353852240444" class="btn btn-primary">📞 Call Now</a>
+          <a href="https://maps.app.goo.gl/tKbK5or1xYr1maKD9" target="_blank" class="btn btn-outline">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.371173469717!2d-8.649729699999998!3d52.6532698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b5de0404fcc31%3A0xeaeafc18dbd40633!2sScott's%20Barbers!5e0!3m2!1sen!2sie!4v1715000000000!5m2!1sen!2sie"
+          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Saffron & Spice Location Map"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">Saffron<span>& Spice</span></div>
+          <p>Premium Indian dining in the heart of Limerick. Honoring tradition, celebrating flavor, and curating luxury.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Heritage</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="openBooking()">Reserve Table</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact & Location</h4>
+          <p>Unit 2, Ashdown Centre,<br/>Courtbrack Ave, Limerick</p>
+          <p>Phone: <a href="tel:+353852240444">+353 85 224 0444</a></p>
+          <div class="footer-rating">★★★★★ <span>4.8 on Google</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Saffron & Spice. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SHOPPING CART SIDE DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Selection</h3>
+      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close Shopping Cart">✕</button>
+    </div>
+    <div class="cart-items-container" id="cartItems">
+      <!-- Injected by script.js -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Subtotal</span>
+        <span class="cart-total-val" id="cartTotal">€0.00</span>
+      </div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn" disabled>Confirm Order & Checkout</button>
+    </div>
+  </div>
+
+  <!-- NATIVE BOOKING DIALOG MODAL -->
+  <dialog id="bookingDialog">
+    <div class="dialog-box">
+      <button class="dialog-close" onclick="closeBooking()" aria-label="Close Reservation Form">✕</button>
+      <div class="dialog-header">
+        <h3>Reserve a Table</h3>
+        <p>Experience culinary artistry. Fill out your details below.</p>
+      </div>
+      <form id="bookingForm" class="booking-form">
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="John" required />
+            <input type="text" id="firstName" placeholder="Arjun" required />
           </div>
           <div class="form-group">
             <label for="phone">Phone Number</label>
@@ -56,13 +227,18 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="service">Service</label>
-          <select id="service" required>
-            <option value="">Select a service...</option>
-            <option>Haircut</option>
-            <option>Shave & Beard Trim</option>
-            <option>Hot Towel Shaving</option>
-            <option>Cut & Style</option>
+          <label for="guests">Number of Guests</label>
+          <select id="guests" required>
+            <option value="">Select guests...</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+            <option value="6">6 Guests</option>
+            <option value="7">7 Guests</option>
+            <option value="8">8 Guests</option>
+            <option value="9">9+ Guests (Call Us)</option>
           </select>
         </div>
         <div class="form-row">
@@ -74,319 +250,49 @@
             <label for="time">Preferred Time</label>
             <select id="time" required>
               <option value="">Select time...</option>
-              <option>9:00 AM</option><option>9:30 AM</option>
-              <option>10:00 AM</option><option>10:30 AM</option>
-              <option>11:00 AM</option><option>11:30 AM</option>
-              <option>12:00 PM</option><option>12:30 PM</option>
-              <option>1:00 PM</option><option>1:30 PM</option>
-              <option>2:00 PM</option><option>2:30 PM</option>
-              <option>3:00 PM</option><option>3:30 PM</option>
-              <option>4:00 PM</option><option>4:30 PM</option>
-              <option>5:00 PM</option><option>5:30 PM</option>
-              <option>6:00 PM</option><option>6:30 PM</option>
+              <option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+              <option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
+              <option>7:00 PM</option><option>7:35 PM</option><option>8:00 PM</option>
+              <option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-gold full-width" id="submit-booking-btn">Confirm Booking ✓</button>
+        <div class="form-group">
+          <label for="requests">Special Requests</label>
+          <textarea id="requests" placeholder="e.g. Vegetarian, Allergen requirements, Birthday celebration..." rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-full">Request Reservation ✓</button>
       </form>
-      <div class="booking-success" id="bookingSuccess" style="display:none">
+
+      <!-- Success reservation panel -->
+      <div id="bookingSuccess" class="dialog-success" style="display: none;">
         <div class="success-icon">✓</div>
-        <h3>Booking Request Sent!</h3>
-        <p>We'll call you at the number provided to confirm your appointment.</p>
-        <button class="btn btn-outline" onclick="closeBookingModal()" style="margin-top:16px">Close</button>
+        <h3>Table Requested</h3>
+        <p>A message has been logged. We will contact you shortly to confirm your booking.</p>
+        <button class="btn btn-outline" onclick="closeBooking()" style="margin-top: 24px;">Close</button>
       </div>
     </div>
-  </div>
+  </dialog>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg-slider">
-      <div class="hero-slide active" style="background-image:url('assets/shop-day.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('assets/shop-night.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('assets/shop3.jpg')"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">⭐ 4.6 Google Rating · Limerick's Finest</div>
-      <h1 class="hero-title">Scott's<br/><span class="hero-accent">Barbers</span></h1>
-      <p class="hero-sub">Premium cuts. Expert shaves. Unmatched style.<br/>Walk-ins always welcome.</p>
-      <div class="hero-btns">
-        <a href="tel:+353852240444" class="btn btn-gold" id="hero-call-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call Now
-        </a>
-        <button class="btn btn-primary-lg" id="hero-book-btn" onclick="openBookingModal()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book Appointment
-        </button>
+  <!-- NATIVE CHECKOUT SUCCESS DIALOG -->
+  <dialog id="checkoutSuccessDialog">
+    <div class="dialog-box dialog-success">
+      <button class="dialog-close" onclick="closeCheckoutSuccess()" aria-label="Close Confirmation">✕</button>
+      <div class="success-icon">🍛</div>
+      <h3>Order Placed Successfully!</h3>
+      <p>Thank you for ordering from Saffron & Spice! We are preparing your fresh Indian delicacies.</p>
+      <div style="margin-top: 16px; font-size: 0.9rem; color: var(--gold);">
+        Estimated prep time: 25-35 minutes
       </div>
-      <div class="hero-info-strip">
-        <div class="info-chip">📍 Courtbrack, Limerick</div>
-        <div class="info-chip">🕐 Mon–Sat: 9am – 7pm</div>
-        <div class="info-chip">✂️ Walk-ins Welcome</div>
-      </div>
+      <button class="btn btn-primary" onclick="closeCheckoutSuccess()" style="margin-top: 28px; width: 100%;">Great, Thank You</button>
     </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  </dialog>
 
-  <!-- RATING BANNER -->
-  <section class="rating-banner">
-    <div class="container">
-      <div class="rating-inner">
-        <div class="rating-left">
-          <div class="stars-big">★★★★★</div>
-          <div class="rating-num">4.6</div>
-          <div class="rating-label">Google Rating</div>
-        </div>
-        <div class="rating-divider"></div>
-        <div class="rating-right">
-          <p>"Limerick's most trusted barbershop — expert hands, welcoming atmosphere."</p>
-        </div>
-        <div class="rating-actions">
-          <a href="tel:+353852240444" class="btn btn-red" id="banner-call-btn">📞 +353 85 224 0444</a>
-          <button class="btn btn-dark" id="banner-book-btn" onclick="openBookingModal()">Book a Visit</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Our Services</span>
-        <h2>Crafted for the Modern Gentleman</h2>
-        <p>Every service delivered with precision and care.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">✂️</div>
-          <h3>Haircut</h3>
-          <p>Classic & modern cuts tailored to your style. Clean fades, sharp lines, perfect finish.</p>
-          <div class="service-price">From €13</div>
-        </div>
-        <div class="service-card featured">
-          <div class="service-badge">Popular</div>
-          <div class="service-icon">🪒</div>
-          <h3>Shave & Beard Trim</h3>
-          <p>Hot towel shave with premium product. Beard sculpting for a sharp, clean look.</p>
-          <div class="service-price">From €15</div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🔥</div>
-          <h3>Hot Towel Shaving</h3>
-          <p>Traditional straight razor shave with a hot towel treatment. The ultimate experience.</p>
-          <div class="service-price">From €20</div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">👑</div>
-          <h3>Cut & Style</h3>
-          <p>Full cut, wash, blow-dry and styling. Walk out looking and feeling your best.</p>
-          <div class="service-price">From €20</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery-section" id="gallery">
-    <div class="container">
-      <div class="section-header light">
-        <span class="section-tag">The Shop</span>
-        <h2>Step Inside Scott's</h2>
-        <p>Our space, our craft, our clients.</p>
-      </div>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item tall">
-        <img src="assets/shop-day.jpg" alt="Scott's Barbers exterior day" loading="lazy" />
-        <div class="gallery-overlay"><span>Our Home in Limerick</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="assets/shop-night.jpg" alt="Scott's Barbers evening" loading="lazy" />
-        <div class="gallery-overlay"><span>Open Late</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="assets/shop3.jpg" alt="Scott's Barbers interior" loading="lazy" />
-        <div class="gallery-overlay"><span>The Shop</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="assets/customer1.jpg" alt="Fresh haircut result" loading="lazy" />
-        <div class="gallery-overlay"><span>Fresh Cut</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="assets/customer2.jpg" alt="Another great haircut" loading="lazy" />
-        <div class="gallery-overlay"><span>Sharp & Clean</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Google Reviews</span>
-        <h2>What Our Clients Say</h2>
-        <div class="overall-rating">
-          <div class="or-stars">★★★★★</div>
-          <div class="or-score">4.6 / 5</div>
-          <div class="or-label">Based on Google Reviews</div>
-        </div>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#e8534a">В</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Владислав Мазун</div>
-              <div class="reviewer-meta">12 reviews · 2 photos · 4 months ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I always get my hair cut only here, even though I'm on the opposite side of the place. A haircut at Roxy is already +100 to confidence. She is not only a professional in her field, but also a nice person. My best recommendations."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#c0392b">M</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Maria Clohessy</div>
-              <div class="reviewer-meta">5 reviews · 5 months ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Excellent barbers. Kids get fantastic haircuts and they are always so happy coming out. Very friendly business and extremely talented. Highly recommend."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#2980b9">C</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Charley Rutledge</div>
-              <div class="reviewer-meta">Local Guide · 14 reviews · 10 months ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I've always had a good clean haircut here. In my opinion, the best barber is the woman who works here. You can tell she is genuinely passionate about her work. She has a great vibe, knows when to have a chat."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#27ae60">H</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Howard</div>
-              <div class="reviewer-meta">Local Guide · 280 reviews · 6 years ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Staff were really friendly and professional. Great hair cut and open on a Sunday. That worked out great and 13 euros for hair cut happy days."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#8e44ad">J</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Jason Energycentre</div>
-              <div class="reviewer-meta">1 review · a year ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"First time using Scott's barbers very impressed, will definitely be coming here in the future."</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar" style="background:#d35400">S</div>
-            <div class="reviewer-info">
-              <div class="reviewer-name">Sunday Visitor</div>
-              <div class="reviewer-meta">5 years ago</div>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Moved down to Limerick for work, found Scott Barber open on a Sunday. Got a fresh cut, they knew what they were doing and took time to finish with their craft. Great experience, will be going back."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT / MAP -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info-block">
-          <span class="section-tag">Find Us</span>
-          <h2>Visit Scott's Barbers</h2>
-          <div class="contact-details">
-            <div class="cd-item">
-              <div class="cd-icon">📍</div>
-              <div>
-                <strong>Address</strong>
-                <p>Unit 2, Ashdown Centre, Courtbrack Ave,<br/>Courtbrack, Limerick, V94 90P0, Ireland</p>
-              </div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-icon">📞</div>
-              <div>
-                <strong>Phone</strong>
-                <p><a href="tel:+353852240444">+353 85 224 0444</a></p>
-              </div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-icon">🕐</div>
-              <div>
-                <strong>Opening Hours</strong>
-                <p>Monday – Saturday: 9:00am – 7:00pm<br/>Sunday: Closed</p>
-              </div>
-            </div>
-          </div>
-          <div class="contact-btns">
-            <a href="tel:+353852240444" class="btn btn-red" id="contact-call-btn">📞 Call Now</a>
-            <a href="https://maps.app.goo.gl/tKbK5or1xYr1maKD9" target="_blank" class="btn btn-outline-dark" id="contact-directions-btn">Get Directions</a>
-          </div>
-        </div>
-        <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.371173469717!2d-8.649729699999998!3d52.6532698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b5de0404fcc31%3A0xeaeafc18dbd40633!2sScott's%20Barbers!5e0!3m2!1sen!2sie!4v1715000000000!5m2!1sen!2sie"
-            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" title="Scott's Barbers Location - Courtbrack, Limerick"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="Scott's Barbers" class="footer-logo" />
-          <p>Premium barbershop in the heart of Limerick.<br/>Walk-ins always welcome.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="javascript:void(0)" onclick="openBookingModal()">Book Now</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact</h4>
-          <p><a href="tel:+353852240444">+353 85 224 0444</a></p>
-          <p>Unit 2, Ashdown Centre,<br/>Courtbrack Ave, Limerick</p>
-          <div class="footer-stars">★★★★★ <span>4.6 on Google</span></div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 Scott's Barbers. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- FLOATING CTA -->
-  <div class="floating-cta" id="floatingCta">
-    <a href="tel:+353852240444" class="fab-btn fab-call" id="fab-call" title="Call Now">📞</a>
-    <button class="fab-btn fab-book" id="fab-book" title="Book Now" onclick="openBookingModal()">📅</button>
+  <!-- FLOATING CTA BUTTONS (FAB) -->
+  <div class="floating-actions">
+    <a href="tel:+353852240444" class="fab fab-call" title="Call Now">📞</a>
+    <button class="fab fab-book" onclick="openBooking()" title="Book Table">📅</button>
+    <button class="fab fab-order" onclick="openCart()" title="Order Online">🛒</button>
   </div>
 
   <script src="script.js"></script>
