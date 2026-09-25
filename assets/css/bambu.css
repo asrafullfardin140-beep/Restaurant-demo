@@ -371,7 +371,14 @@ em {
 }
 
 /* Premium thin-bordered hero buttons */
+/* ═══════════════════════════════════════════════════
+   ANIMATED HOVER BUTTONS  (Book a Table / Order Online)
+   Inspired by InteractiveHoverButton — expanding fill
+   ═══════════════════════════════════════════════════ */
+
+/* Base animated button */
 .btn-solid {
+    position: relative;
     display: block;
     width: 100%;
     text-align: center;
@@ -381,18 +388,104 @@ em {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 4px;
-    border-radius: 2px;
-    transition: all 0.35s ease;
+    border-radius: 100px;          /* pill shape to match the component */
     cursor: pointer;
     background: transparent;
     border: 1px solid rgba(206, 170, 123, 0.6);
     color: var(--accent-gold);
+    overflow: hidden;              /* clips the expanding circle */
+    transition: border-color 0.35s ease, color 0.35s ease;
 }
 
+/* The visible label — slides right & fades on hover */
+.btn-solid .btn-label {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* The hover reveal layer — text + arrow, slides in from right */
+.btn-solid .btn-hover-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--bg-darker);       /* dark text on gold fill */
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(3rem);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.btn-solid .btn-hover-inner svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke-width: 2.5;
+}
+
+/* The expanding fill circle — small dot → full button */
+.btn-solid .btn-fill {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    transform: scale(1);
+    transition: left 0.4s ease, top 0.4s ease,
+                width 0.4s ease, height 0.4s ease,
+                transform 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ── HOVER STATES ── */
 .btn-solid:hover {
-    background: rgba(206, 170, 123, 0.08);
     border-color: var(--accent-gold);
-    transform: translateY(-1px);
+}
+
+/* Label slides right and disappears */
+.btn-solid:hover .btn-label {
+    transform: translateX(3rem);
+    opacity: 0;
+}
+
+/* Hover inner slides in from right */
+.btn-solid:hover .btn-hover-inner {
+    transform: translateX(-0.1rem);
+    opacity: 1;
+}
+
+/* Circle floods the entire button */
+.btn-solid:hover .btn-fill {
+    left: -10%;
+    top: -10%;
+    width: 130%;
+    height: 130%;
+    transform: scale(1.8);
+    border-radius: 50%;
+}
+
+/* ── CALL NOW — simpler button (no fill animation, just subtle glow) ── */
+.btn-solid.btn-plain {
+    border-radius: 100px;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-solid.btn-plain:hover {
+    background: rgba(206, 170, 123, 0.1);
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
 }
 
 /* Solid gold fill variant (primary action) */
@@ -400,11 +493,98 @@ em {
     background-color: var(--accent-gold);
     color: var(--bg-darker);
 }
-
 .btn-solid.primary:hover {
     background-color: transparent;
     color: var(--accent-gold);
 }
+
+/* ── NAV animated buttons (MENU / ORDER ONLINE / BOOK A TABLE) ── */
+.btn-nav {
+    position: relative;
+    border: 1px solid rgba(194, 160, 119, 0.4);
+    padding: 0.6rem 1.2rem;
+    color: var(--accent-gold) !important;
+    border-radius: 100px;
+    overflow: hidden;
+    transition: border-color 0.3s ease !important;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.btn-nav .btn-label {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-nav .btn-hover-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--bg-darker);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(2rem);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.btn-nav .btn-hover-inner svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+
+.btn-nav .btn-fill {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    transform: scale(1);
+    transition: left 0.35s ease, top 0.35s ease,
+                width 0.35s ease, height 0.35s ease,
+                transform 0.35s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.btn-nav:hover {
+    border-color: var(--accent-gold);
+}
+.btn-nav:hover .btn-label {
+    transform: translateX(2.5rem);
+    opacity: 0;
+}
+.btn-nav:hover .btn-hover-inner {
+    transform: translateX(-0.1rem);
+    opacity: 1;
+}
+.btn-nav:hover .btn-fill {
+    left: -10%;
+    top: -10%;
+    width: 130%;
+    height: 130%;
+    transform: scale(1.8);
+    border-radius: 50%;
+}
+
 
 .scroll-indicator {
     position: absolute;
