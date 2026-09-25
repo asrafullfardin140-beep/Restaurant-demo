@@ -129,8 +129,8 @@ em {
 }
 
 .logo-img {
-    width: 45px;
-    height: 45px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -362,11 +362,13 @@ em {
 
 .hero-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -379,22 +381,25 @@ em {
 /* Base animated button */
 .btn-solid {
     position: relative;
-    display: block;
-    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 170px;
     text-align: center;
     text-decoration: none;
-    padding: 1rem 2rem;
-    font-size: 0.85rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.78rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 4px;
-    border-radius: 100px;          /* pill shape to match the component */
+    letter-spacing: 3px;
+    border-radius: 100px;
     cursor: pointer;
     background: transparent;
-    border: 1px solid rgba(206, 170, 123, 0.6);
+    border: 1px solid rgba(206, 170, 123, 0.5);
     color: var(--accent-gold);
-    overflow: hidden;              /* clips the expanding circle */
-    transition: border-color 0.35s ease, color 0.35s ease;
+    overflow: hidden;
+    transition: border-color 0.35s ease;
 }
 
 /* The visible label — slides right & fades on hover */
@@ -433,19 +438,19 @@ em {
     stroke-width: 2.5;
 }
 
-/* The expanding fill circle — small dot → full button */
+/* Fill circle — INVISIBLE at rest (scale 0), floods button on hover */
 .btn-solid .btn-fill {
     position: absolute;
-    left: 20%;
-    top: 40%;
+    left: 50%;
+    top: 50%;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: var(--accent-gold);
-    transform: scale(1);
-    transition: left 0.4s ease, top 0.4s ease,
-                width 0.4s ease, height 0.4s ease,
-                transform 0.4s ease;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.15s ease;
     z-index: 1;
     pointer-events: none;
 }
@@ -457,24 +462,20 @@ em {
 
 /* Label slides right and disappears */
 .btn-solid:hover .btn-label {
-    transform: translateX(3rem);
+    transform: translateX(2.5rem);
     opacity: 0;
 }
 
 /* Hover inner slides in from right */
 .btn-solid:hover .btn-hover-inner {
-    transform: translateX(-0.1rem);
+    transform: translateX(0);
     opacity: 1;
 }
 
-/* Circle floods the entire button */
+/* Circle expands from centre to flood button */
 .btn-solid:hover .btn-fill {
-    left: -10%;
-    top: -10%;
-    width: 130%;
-    height: 130%;
-    transform: scale(1.8);
-    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(30);
+    opacity: 1;
 }
 
 /* ── CALL NOW — simpler button (no fill animation, just subtle glow) ── */
@@ -551,16 +552,16 @@ em {
 
 .btn-nav .btn-fill {
     position: absolute;
-    left: 20%;
-    top: 40%;
+    left: 50%;
+    top: 50%;
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background-color: var(--accent-gold);
-    transform: scale(1);
-    transition: left 0.35s ease, top 0.35s ease,
-                width 0.35s ease, height 0.35s ease,
-                transform 0.35s ease;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.15s ease;
     z-index: 1;
     pointer-events: none;
 }
@@ -569,20 +570,16 @@ em {
     border-color: var(--accent-gold);
 }
 .btn-nav:hover .btn-label {
-    transform: translateX(2.5rem);
+    transform: translateX(2rem);
     opacity: 0;
 }
 .btn-nav:hover .btn-hover-inner {
-    transform: translateX(-0.1rem);
+    transform: translateX(0);
     opacity: 1;
 }
 .btn-nav:hover .btn-fill {
-    left: -10%;
-    top: -10%;
-    width: 130%;
-    height: 130%;
-    transform: scale(1.8);
-    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(25);
+    opacity: 1;
 }
 
 
@@ -1127,12 +1124,24 @@ footer {
         padding: 0 1rem;
     }
     .hero-buttons {
-        max-width: 300px;
+        flex-direction: column;
+        align-items: center;
+        max-width: 260px;
     }
     .btn-solid {
-        padding: 0.8rem 1rem;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
+        width: 100%;
+        min-width: unset;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        justify-content: center;
+    }
+    .logo-img {
+        width: 52px;
+        height: 52px;
+    }
+    .logo-title {
+        font-size: 1.15rem;
     }
     .story, .dishes, .booking {
         padding: 4rem 1.5rem;
@@ -1186,6 +1195,89 @@ footer {
     }
     footer {
         padding: 4rem 1.5rem 2rem;
+    }
+    /* Story section: single column on mobile */
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+    }
+    .story-text {
+        padding-left: 0;
+        padding-right: 0;
+        order: 2;
+    }
+    .story-image {
+        order: 1;
+        height: 280px;
+    }
+    .story-text h2, .dishes-header h2, .booking-container h2 {
+        font-size: 2.2rem;
+    }
+    /* Hero title scaling for small phones */
+    .hero-content h1 {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+    /* FAQ section on mobile */
+    #faq .story-content {
+        padding: 0 1.2rem;
+    }
+    /* Dishes images single column */
+    .dishes-images {
+        grid-template-columns: 1fr;
+    }
+    .dishes-images img {
+        height: 280px;
+    }
+    /* Dish grid single column */
+    .dishes-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    /* Dishes header h2 */
+    .dishes-header {
+        padding: 0 1rem;
+        text-align: center;
+    }
+    /* Dishes section padding */
+    .dishes {
+        padding: 4rem 1.2rem;
+    }
+    /* Scroll indicator hide on small phones */
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* ── Extra small phones (≤ 420px) ── */
+@media (max-width: 420px) {
+    .hero-content h1 {
+        font-size: 1.9rem;
+    }
+    .hero-buttons {
+        max-width: 220px;
+    }
+    .btn-solid {
+        font-size: 0.68rem;
+        letter-spacing: 1.5px;
+        padding: 0.75rem 1.2rem;
+    }
+    .logo-img {
+        width: 44px;
+        height: 44px;
+    }
+    .logo-title {
+        font-size: 1rem;
+    }
+    .logo-subtitle {
+        display: none;
+    }
+    footer {
+        padding: 3rem 1rem 2rem;
+    }
+    .story-text h2, .dishes-header h2 {
+        font-size: 1.9rem;
     }
 }
 
