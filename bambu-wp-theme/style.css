@@ -1,0 +1,13 @@
+/*
+Theme Name: Bambu Restaurant
+Theme URI: https://bamburestaurant.ie
+Author: Bambu Restaurant Limerick
+Author URI: https://bamburestaurant.ie
+Description: Premium dark-themed landing page for Bambu Indian & Thai Restaurant, Limerick. Features hero slideshow, booking modal, interactive menu viewer, and full mobile responsiveness.
+Version: 1.0
+License: Private
+Text Domain: bambu-restaurant
+Tags: restaurant, dark, premium, one-page, mobile-first
+*/
+
+/* All site CSS is enqueued via functions.php from assets/css/bambu.css */

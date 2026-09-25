@@ -1,300 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saffron & Spice – Premium Indian Dining</title>
-  <meta name="description" content="Saffron & Spice – Limerick's premium Indian dining experience. Authentic tandoori specialties, hand-ground spices, and elegant modern cuisine. Order online or book a table." />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bambu Indian &amp; Thai Restaurant &mdash; Limerick</title>
+    <meta name="description" content="Bambu Indian &amp; Thai Restaurant, Limerick — Award-winning Indian and Thai cuisine in the heart of Limerick City. Book a table online or call +353 61 217 661.">
+    <meta name="theme-color" content="#0f0d0c">
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+    <link rel="preload" href="assets/anim-1.webp" as="image" type="image/webp" fetchpriority="high">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/bambu.css">
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="nav-logo">
-        Saffron<span>& Spice</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">Heritage</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="nav-cart-btn" id="navCartBtn" aria-label="View Shopping Cart">
-          🛒
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
-        <button class="btn btn-gold" onclick="openBooking()">Book a Table</button>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    <!-- ═══════════════════════════════════ NAVBAR ═══════════════════════════════════ -->
+    <nav class="navbar" id="main-navbar">
+        <div class="nav-container">
 
-  <!-- HERO SECTION WITH VIDEO BACKGROUND -->
-  <section class="hero" id="home">
-    <div class="hero-video-container">
-      <video class="hero-video" autoplay loop muted playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-cooking-in-a-pot-close-up-4638-large.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">✨ Royal Indian Gastronomy</div>
-      <h1 class="hero-title">Saffron &<br/><span>Spice</span></h1>
-      <p class="hero-sub">A symphony of authentic tandoori fire, hand-ground spices, and luxurious modern Indian dining.</p>
-      <div class="hero-btns">
-        <button class="btn btn-primary" onclick="openCart()">Order Online</button>
-        <button class="btn btn-gold" onclick="openBooking()">Reserve Table</button>
-        <a href="tel:+353852240444" class="btn btn-outline">📞 Call Now</a>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ABOUT HERITAGE SECTION -->
-  <section class="about" id="about">
-    <div class="container about-grid">
-      <div class="about-content">
-        <span class="section-tag">Our Story</span>
-        <h3>A Legacy of <span>Clay Ovens & Rare Spices</span></h3>
-        <p>At Saffron & Spice, we craft an immersive dining experience that honors centuries of culinary tradition. Our master chefs prepare each dish utilizing custom tandoors (traditional clay ovens) that reach temperatures over 400°C, locking in smoky complexity and tender juices.</p>
-        <p>Every single blend of spice is ground in-house, ensuring an unparalleled depth of aroma and flavor that standard commercial ingredients can never replicate.</p>
-        <div class="about-features">
-          <div class="about-feature-card">
-            <div class="af-icon">🪔</div>
-            <h4>Smoky Tandoor</h4>
-            <p>Searing skewers and fresh naans baked on hot clay walls.</p>
-          </div>
-          <div class="about-feature-card">
-            <div class="af-icon">🌶️</div>
-            <h4>Hand-Ground</h4>
-            <p>Our spices are freshly ground daily for maximum fragrance.</p>
-          </div>
-        </div>
-      </div>
-      <div class="about-image-stack">
-        <img src="assets/indian_restaurant_interior.png" alt="Saffron & Spice elegant dining hall" class="about-img-main" />
-        <img src="assets/tandoori_platter.png" alt="Sizzling tandoori delicacies" class="about-img-overlap" />
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE MENU SECTION -->
-  <section class="menu-section" id="menu">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">The Cuisine</span>
-        <h2>Explore Our <span>Culinary Canvas</span></h2>
-        <p>Select a category below to explore our menus and add dishes directly to your online order.</p>
-      </div>
-
-      <!-- Category Filter Tabs -->
-      <div class="menu-categories" id="menuCategories">
-        <button class="menu-tab active" data-category="all">All Dishes</button>
-        <button class="menu-tab" data-category="appetizers">Appetizers</button>
-        <button class="menu-tab" data-category="tandoor">Tandoor & Mains</button>
-        <button class="menu-tab" data-category="specials">Chef Specials</button>
-        <button class="menu-tab" data-category="breads">Breads & Sides</button>
-        <button class="menu-tab" data-category="drinks">Drinks</button>
-      </div>
-
-      <!-- Menu Items Grid -->
-      <div class="menu-grid" id="menuGrid">
-        <!-- Rendered dynamically by script.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT & LOCATION -->
-  <section class="contact-section" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info-block">
-        <span class="section-tag">Find Us</span>
-        <h2>Experience <span>Saffron & Spice</span></h2>
-        <p class="desc">Visit us for lunch or dinner, or call to make large group party bookings.</p>
-        <div class="contact-details">
-          <div class="cd-item">
-            <div class="cd-icon">📍</div>
-            <div>
-              <strong>Address</strong>
-              <p>Unit 2, Ashdown Centre, Courtbrack Ave,<br/>Limerick, V94 90P0, Ireland</p>
+            <!-- Mobile: Left actions -->
+            <div class="mobile-actions left">
+                <button class="mobile-icon-btn menu-toggle" aria-label="Open navigation menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+                <button class="mobile-icon-btn btn-book calendar-btn" aria-label="Book a table">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </button>
             </div>
-          </div>
-          <div class="cd-item">
-            <div class="cd-icon">📞</div>
-            <div>
-              <strong>Reservations & Enquiries</strong>
-              <p><a href="tel:+353852240444">+353 85 224 0444</a></p>
+
+            <!-- Logo -->
+            <a href="#home" class="logo-container">
+                <img src="assets/logo.jpg" alt="Bambu Restaurant Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Bambu</span>
+                    <span class="logo-subtitle">INDIAN &amp; THAI &middot; LIMERICK</span>
+                </div>
+            </a>
+
+            <!-- Mobile: Right actions -->
+            <div class="mobile-actions right">
+                <a href="tel:+35361217661" class="mobile-icon-btn phone-btn" aria-label="Call us">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </a>
+                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="mobile-icon-btn order-btn" aria-label="Order online">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </a>
             </div>
-          </div>
-          <div class="cd-item">
-            <div class="cd-icon">🕐</div>
-            <div>
-              <strong>Operating Hours</strong>
-              <p>Monday – Saturday: 12:00pm – 10:30pm<br/>Sunday: 1:00pm – 10:00pm</p>
+
+            <!-- Desktop navigation links -->
+            <div class="nav-links">
+                <a href="#home">HOME</a>
+                <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
+                <span class="nav-separator"></span>
+                <a href="assets/menu.pdf" target="_blank" class="btn-nav" id="open-menu-btn">MENU</a>
+                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="btn-nav">ORDER ONLINE</a>
+                <a href="#" class="btn-nav btn-book">BOOK A TABLE</a>
             </div>
-          </div>
-        </div>
-        <div class="contact-btns">
-          <a href="tel:+353852240444" class="btn btn-primary">📞 Call Now</a>
-          <a href="https://maps.app.goo.gl/tKbK5or1xYr1maKD9" target="_blank" class="btn btn-outline">Get Directions</a>
-        </div>
-      </div>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.371173469717!2d-8.649729699999998!3d52.6532698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b5de0404fcc31%3A0xeaeafc18dbd40633!2sScott's%20Barbers!5e0!3m2!1sen!2sie!4v1715000000000!5m2!1sen!2sie"
-          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="Saffron & Spice Location Map"></iframe>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-logo">Saffron<span>& Spice</span></div>
-          <p>Premium Indian dining in the heart of Limerick. Honoring tradition, celebrating flavor, and curating luxury.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Heritage</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="javascript:void(0)" onclick="openBooking()">Reserve Table</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact & Location</h4>
-          <p>Unit 2, Ashdown Centre,<br/>Courtbrack Ave, Limerick</p>
-          <p>Phone: <a href="tel:+353852240444">+353 85 224 0444</a></p>
-          <div class="footer-rating">★★★★★ <span>4.8 on Google</span></div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Saffron & Spice. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+            <!-- Mobile dropdown navigation -->
+            <div class="mobile-nav-menu" id="mobile-nav-menu">
+                <a href="#home">HOME</a>
+                <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
+                <a href="#" id="open-menu-mobile">MENU</a>
+                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">ORDER ONLINE</a>
+                <a href="tel:+35361217661">CALL NOW &mdash; +353 61 217 661</a>
+                <a href="#" class="btn-book">BOOK A TABLE</a>
+            </div>
 
-  <!-- SHOPPING CART SIDE DRAWER -->
-  <div class="cart-drawer-overlay" id="cartOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <h3>Your Selection</h3>
-      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close Shopping Cart">✕</button>
-    </div>
-    <div class="cart-items-container" id="cartItems">
-      <!-- Injected by script.js -->
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total-row">
-        <span class="cart-total-label">Subtotal</span>
-        <span class="cart-total-val" id="cartTotal">€0.00</span>
-      </div>
-      <button class="btn btn-primary btn-full" id="checkoutBtn" disabled>Confirm Order & Checkout</button>
-    </div>
-  </div>
-
-  <!-- NATIVE BOOKING DIALOG MODAL -->
-  <dialog id="bookingDialog">
-    <div class="dialog-box">
-      <button class="dialog-close" onclick="closeBooking()" aria-label="Close Reservation Form">✕</button>
-      <div class="dialog-header">
-        <h3>Reserve a Table</h3>
-        <p>Experience culinary artistry. Fill out your details below.</p>
-      </div>
-      <form id="bookingForm" class="booking-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="Arjun" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="+353..." required />
-          </div>
         </div>
-        <div class="form-group">
-          <label for="guests">Number of Guests</label>
-          <select id="guests" required>
-            <option value="">Select guests...</option>
-            <option value="1">1 Guest</option>
-            <option value="2">2 Guests</option>
-            <option value="3">3 Guests</option>
-            <option value="4">4 Guests</option>
-            <option value="5">5 Guests</option>
-            <option value="6">6 Guests</option>
-            <option value="7">7 Guests</option>
-            <option value="8">8 Guests</option>
-            <option value="9">9+ Guests (Call Us)</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="date">Preferred Date</label>
-            <input type="date" id="date" required />
-          </div>
-          <div class="form-group">
-            <label for="time">Preferred Time</label>
-            <select id="time" required>
-              <option value="">Select time...</option>
-              <option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
-              <option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
-              <option>7:00 PM</option><option>7:35 PM</option><option>8:00 PM</option>
-              <option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="requests">Special Requests</label>
-          <textarea id="requests" placeholder="e.g. Vegetarian, Allergen requirements, Birthday celebration..." rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-gold btn-full">Request Reservation ✓</button>
-      </form>
+    </nav>
+    <!-- ════════════════════════════════ END NAVBAR ═════════════════════════════════ -->
 
-      <!-- Success reservation panel -->
-      <div id="bookingSuccess" class="dialog-success" style="display: none;">
-        <div class="success-icon">✓</div>
-        <h3>Table Requested</h3>
-        <p>A message has been logged. We will contact you shortly to confirm your booking.</p>
-        <button class="btn btn-outline" onclick="closeBooking()" style="margin-top: 24px;">Close</button>
-      </div>
+    <!-- ═══════════════════════════════ HERO SECTION ══════════════════════════════ -->
+    <main>
+        <section id="home" class="hero">
+
+            <!-- Desktop Slideshow -->
+            <div class="hero-bg desktop-bg">
+                <div class="hero-slide slide-1" style="background-image: url('assets/anim-1.webp');" aria-hidden="true"></div>
+                <div class="hero-slide slide-2" data-bg="assets/anim-2.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-3" data-bg="assets/anim-3.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-4" data-bg="assets/anim-4.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-5" data-bg="assets/anim-5.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-6" data-bg="assets/anim-6.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-7" data-bg="assets/anim-7.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-8" data-bg="assets/anim-8.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-9" data-bg="assets/anim-9.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-10" data-bg="assets/anim-10.webp" aria-hidden="true"></div>
+                <div class="hero-slide slide-11" data-bg="assets/anim-11.webp" aria-hidden="true"></div>
+            </div>
+
+            <!-- Mobile Slideshow -->
+            <div class="hero-bg mobile-bg">
+                <div class="hero-slide m-slide-1" style="background-image: url('assets/anim-1.webp');" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-2" data-bg="assets/anim-2.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-3" data-bg="assets/anim-3.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-4" data-bg="assets/anim-4.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-5" data-bg="assets/anim-5.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-6" data-bg="assets/anim-6.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-7" data-bg="assets/anim-7.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-8" data-bg="assets/anim-8.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-9" data-bg="assets/anim-9.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-10" data-bg="assets/anim-10.webp" aria-hidden="true"></div>
+                <div class="hero-slide m-slide-11" data-bg="assets/anim-11.webp" aria-hidden="true"></div>
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <!-- Hero Text & Buttons -->
+            <div class="hero-content">
+                <h1 class="typewriter-text" id="typewriter-heading"></h1>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-solid btn-book">BOOK A TABLE</a>
+                    <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="btn-solid light">ORDER ONLINE</a>
+                    <a href="tel:+35361217661" class="btn-solid">CALL NOW</a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span>SCROLL</span>
+            </div>
+
+        </section>
+    </main>
+    <!-- ════════════════════════════ END HERO SECTION ═════════════════════════════ -->
+
+    <!-- ═══════════════════════════════ SITE FOOTER ═══════════════════════════════ -->
+    <footer id="contact">
+
+        <!-- Top row: Find Us | Open | Reserve -->
+        <div class="footer-top">
+            <div class="footer-col-center">
+                <h5>FIND US</h5>
+                <p class="big-text">28 O'Connell Street</p>
+                <p>Limerick City, Ireland</p>
+            </div>
+            <div class="footer-col-center border-sides">
+                <h5>OPEN</h5>
+                <p class="big-text">Mon &ndash; Sat</p>
+                <p>17:00 &ndash; 22:45</p>
+                <p class="big-text" style="font-size: 1.2rem; margin-top: 0.8rem;">Sunday</p>
+                <p>14:00 &ndash; 22:00</p>
+            </div>
+            <div class="footer-col-center">
+                <h5>RESERVE</h5>
+                <p class="big-text">+353 61 217 661</p>
+                <a href="tel:+35361217661" class="link-text">CALL NOW</a>
+                <a href="#" class="link-text btn-book" style="display:block; margin-top:0.5rem;">BOOK ONLINE</a>
+            </div>
+        </div>
+
+        <!-- Middle row: Logo/desc | Links/hours -->
+        <div class="footer-middle">
+            <div class="footer-info">
+                <a href="#home" class="logo-container">
+                    <img src="assets/logo.jpg" alt="Bambu Restaurant Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">Bambu</span>
+                    </div>
+                </a>
+                <p class="desc">Indian &amp; Thai cooking on the banks of the<br>
+                Shannon &mdash; two great traditions, one quiet dining<br>room in Limerick.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-visit">
+                    <h5>VISIT</h5>
+                    <p>28 O'Connell Street<br>Limerick City, Ireland</p>
+                    <p class="mt-2">+353 61 217 661<br>
+                    <a href="mailto:info@bamburestaurant.ie" style="color:inherit;">info@bamburestaurant.ie</a></p>
+                </div>
+                <div class="footer-hours">
+                    <h5>HOURS</h5>
+                    <p>Mon, Tue, Wed, Thu &ndash; Sat &middot; 17:00 &ndash; 22:45</p>
+                    <p>Sunday &middot; 14:00 &ndash; 22:00</p>
+                    <div class="socials mt-2">
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/bambu_restaurant_limerick/" target="_blank" rel="noopener" aria-label="Bambu on Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/bambulimerick" target="_blank" rel="noopener" aria-label="Bambu on Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom row: copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bambu Indian &amp; Thai Restaurant. All rights reserved.</p>
+            <div class="bottom-links">
+                <a href="#" class="btn-book">Book a table</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+    </footer>
+    <!-- ════════════════════════════ END SITE FOOTER ══════════════════════════════ -->
+
+    <!-- ══════════════════════════ BOOKING MODAL ═════════════════════════════════ -->
+    <div id="booking-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-content dark-theme">
+            <span class="close-modal" role="button" aria-label="Close booking form">&times;</span>
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <img src="assets/logo.jpg" alt="Bambu Restaurant Logo">
+                </div>
+                <div class="modal-divider">
+                    <span class="ornament"></span>
+                </div>
+                <h2 id="booking-modal-title">Book Now!</h2>
+            </div>
+
+            <form id="premium-booking-form" class="premium-form" novalidate>
+                <div class="premium-form-grid">
+
+                    <!-- Date -->
+                    <div class="form-group-premium">
+                        <label for="booking-date"><span class="label-icon"></span> Date</label>
+                        <input type="date" required class="dark-input" id="booking-date" name="booking_date">
+                    </div>
+
+                    <!-- Guests -->
+                    <div class="form-group-premium">
+                        <label for="booking-guests"><span class="label-icon"></span> Guests</label>
+                        <select required class="dark-input" id="booking-guests" name="guests">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7">7 People</option>
+                            <option value="8">8 People</option>
+                            <option value="9">9 People</option>
+                            <option value="10">10 People</option>
+                            <option value="11">11 People</option>
+                            <option value="12">12 People</option>
+                            <option value="13">13 People</option>
+                            <option value="14">14 People</option>
+                            <option value="15">15 People</option>
+                            <option value="16">16 People</option>
+                            <option value="17">17 People</option>
+                            <option value="18">18 People</option>
+                            <option value="19">19 People</option>
+                            <option value="20">20 People</option>
+                            <option value="20+">20+ People (Large Group)</option>
+                        </select>
+                    </div>
+
+                    <!-- Time -->
+                    <div class="form-group-premium">
+                        <label for="booking-time"><span class="label-icon"></span> Time</label>
+                        <select required class="dark-input" id="booking-time" name="booking_time">
+                            <option value="" disabled selected>Select a Date First</option>
+                        </select>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="form-group-premium">
+                        <label for="booking-name"><span class="label-icon"></span> Name</label>
+                        <input type="text" id="booking-name" name="guest_name" placeholder="Your Name" required class="dark-input">
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group-premium">
+                        <label for="booking-phone"><span class="label-icon"></span> Phone</label>
+                        <input type="tel" id="booking-phone" name="guest_phone" placeholder="Your Phone" required class="dark-input">
+                    </div>
+
+                    <!-- Email (full width) -->
+                    <div class="form-group-premium full-width">
+                        <label for="booking-email"><span class="label-icon"></span> Email</label>
+                        <input type="email" id="booking-email" name="guest_email" placeholder="Your Email" required class="dark-input">
+                    </div>
+
+                    <!-- Message (full width) -->
+                    <div class="form-group-premium full-width">
+                        <label for="booking-message"><span class="label-icon"></span> Message</label>
+                        <textarea id="booking-message" name="guest_message" rows="2" placeholder="Special requests or dietary needs..." class="dark-input"></textarea>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn-orange" id="booking-submit-btn">Confirm Reservation</button>
+            </form>
+        </div>
     </div>
-  </dialog>
+    <!-- ═════════════════════════ END BOOKING MODAL ═══════════════════════════════ -->
 
-  <!-- NATIVE CHECKOUT SUCCESS DIALOG -->
-  <dialog id="checkoutSuccessDialog">
-    <div class="dialog-box dialog-success">
-      <button class="dialog-close" onclick="closeCheckoutSuccess()" aria-label="Close Confirmation">✕</button>
-      <div class="success-icon">🍛</div>
-      <h3>Order Placed Successfully!</h3>
-      <p>Thank you for ordering from Saffron & Spice! We are preparing your fresh Indian delicacies.</p>
-      <div style="margin-top: 16px; font-size: 0.9rem; color: var(--gold);">
-        Estimated prep time: 25-35 minutes
-      </div>
-      <button class="btn btn-primary" onclick="closeCheckoutSuccess()" style="margin-top: 28px; width: 100%;">Great, Thank You</button>
+    <!-- ══════════════════════════ MENU VIEWER MODAL ══════════════════════════════ -->
+    <div id="menu-modal" class="menu-modal" role="dialog" aria-modal="true" aria-label="Bambu Restaurant Menu">
+        <div class="menu-modal-overlay"></div>
+        <div class="menu-modal-container">
+
+            <!-- Menu header -->
+            <div class="menu-modal-header">
+                <div class="menu-modal-title">
+                    <span class="menu-label">BAMBU</span>
+                    <span class="menu-subtitle">OUR MENU</span>
+                </div>
+                <div class="menu-page-counter">
+                    <span id="menu-current-page">1</span> / 10
+                </div>
+                <button class="menu-close-btn" id="menu-close-btn" aria-label="Close menu">&times;</button>
+            </div>
+
+            <!-- Menu pages -->
+            <div class="menu-pages-wrapper" id="menu-pages-wrapper">
+                <div class="menu-page active" data-page="1">
+                    <img src="assets/menu/menu-1.webp" alt="Menu Page 1">
+                </div>
+                <div class="menu-page" data-page="2">
+                    <img data-src="assets/menu/menu-2.webp" alt="Menu Page 2" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="3">
+                    <img data-src="assets/menu/menu-3.webp" alt="Menu Page 3" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="4">
+                    <img data-src="assets/menu/menu-4.webp" alt="Menu Page 4" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="5">
+                    <img data-src="assets/menu/menu-5.webp" alt="Menu Page 5" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="6">
+                    <img data-src="assets/menu/menu-6.webp" alt="Menu Page 6" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="7">
+                    <img data-src="assets/menu/menu-7.webp" alt="Menu Page 7" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="8">
+                    <img data-src="assets/menu/menu-8.webp" alt="Menu Page 8" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="9">
+                    <img data-src="assets/menu/menu-9.webp" alt="Menu Page 9" loading="lazy">
+                </div>
+                <div class="menu-page" data-page="10">
+                    <img data-src="assets/menu/menu-10.webp" alt="Menu Page 10" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Menu footer navigation -->
+            <div class="menu-modal-footer">
+                <button class="menu-nav-btn" id="menu-prev" disabled aria-label="Previous page">
+                    &#8592; PREV
+                </button>
+                <div class="menu-thumbnails" role="tablist" aria-label="Menu page navigation">
+                    <span class="menu-thumb-dot active" data-page="1" role="tab" aria-label="Page 1" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="2" role="tab" aria-label="Page 2" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="3" role="tab" aria-label="Page 3" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="4" role="tab" aria-label="Page 4" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="5" role="tab" aria-label="Page 5" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="6" role="tab" aria-label="Page 6" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="7" role="tab" aria-label="Page 7" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="8" role="tab" aria-label="Page 8" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="9" role="tab" aria-label="Page 9" tabindex="0"></span>
+                    <span class="menu-thumb-dot" data-page="10" role="tab" aria-label="Page 10" tabindex="0"></span>
+                </div>
+                <button class="menu-nav-btn" id="menu-next" aria-label="Next page">
+                    NEXT &#8594;
+                </button>
+            </div>
+
+        </div>
     </div>
-  </dialog>
+    <!-- ════════════════════════ END MENU VIEWER MODAL ════════════════════════════ -->
 
-  <!-- FLOATING CTA BUTTONS (FAB) -->
-  <div class="floating-actions">
-    <a href="tel:+353852240444" class="fab fab-call" title="Call Now">📞</a>
-    <button class="fab fab-book" onclick="openBooking()" title="Book Table">📅</button>
-    <button class="fab fab-order" onclick="openCart()" title="Order Online">🛒</button>
-  </div>
-
-  <script src="script.js"></script>
+    <!-- Main JavaScript -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
