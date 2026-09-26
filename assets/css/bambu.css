@@ -455,25 +455,33 @@ em {
     pointer-events: none;
 }
 
-/* ── HOVER STATES ── */
-.btn-solid:hover {
+/* ── HOVER & ACTIVE (Touch/Mobile) STATES ── */
+.btn-solid:hover,
+.btn-solid:active,
+.btn-solid:focus-visible {
     border-color: var(--accent-gold);
 }
 
 /* Label slides right and disappears */
-.btn-solid:hover .btn-label {
+.btn-solid:hover .btn-label,
+.btn-solid:active .btn-label,
+.btn-solid:focus-visible .btn-label {
     transform: translateX(2.5rem);
     opacity: 0;
 }
 
 /* Hover inner slides in from right */
-.btn-solid:hover .btn-hover-inner {
+.btn-solid:hover .btn-hover-inner,
+.btn-solid:active .btn-hover-inner,
+.btn-solid:focus-visible .btn-hover-inner {
     transform: translateX(0);
     opacity: 1;
 }
 
 /* Circle expands from centre to flood button */
-.btn-solid:hover .btn-fill {
+.btn-solid:hover .btn-fill,
+.btn-solid:active .btn-fill,
+.btn-solid:focus-visible .btn-fill {
     transform: translate(-50%, -50%) scale(30);
     opacity: 1;
 }
@@ -566,18 +574,26 @@ em {
     pointer-events: none;
 }
 
-.btn-nav:hover {
+.btn-nav:hover,
+.btn-nav:active,
+.btn-nav:focus-visible {
     border-color: var(--accent-gold);
 }
-.btn-nav:hover .btn-label {
+.btn-nav:hover .btn-label,
+.btn-nav:active .btn-label,
+.btn-nav:focus-visible .btn-label {
     transform: translateX(2rem);
     opacity: 0;
 }
-.btn-nav:hover .btn-hover-inner {
+.btn-nav:hover .btn-hover-inner,
+.btn-nav:active .btn-hover-inner,
+.btn-nav:focus-visible .btn-hover-inner {
     transform: translateX(0);
     opacity: 1;
 }
-.btn-nav:hover .btn-fill {
+.btn-nav:hover .btn-fill,
+.btn-nav:active .btn-fill,
+.btn-nav:focus-visible .btn-fill {
     transform: translate(-50%, -50%) scale(25);
     opacity: 1;
 }
