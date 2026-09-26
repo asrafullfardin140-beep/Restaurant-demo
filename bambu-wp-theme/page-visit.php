@@ -1,0 +1,12 @@
+<?php
+/** Template Name: Bambu visit */
+get_header();
+?>
+<main id="main-content" class="content-page"><header class="page-intro"><p class="section-label">Visit & FAQs</p><h1>Find your way<br><em>to Bambu.</em></h1><p>28 O'Connell Street, Limerick City, Ireland.</p></header><section class="content-grid visit-cards"><article><h2>Find us</h2><p>Join us on O'Connell Street in Limerick City Centre.</p><a class="btn-text" href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">Get Directions &rarr;</a></article><article><h2>Opening hours</h2><p>Monday–Saturday: 17:00–22:45<br>Sunday: 14:00–22:00</p></article><article><h2>Get in touch</h2><p><a href="tel:+35361217661">+353 61 217 661</a><br><a href="mailto:info@bamburestaurant.ie">info@bamburestaurant.ie</a></p><a href="#" class="btn-text btn-book">Book a table &rarr;</a></article></section><section class="page-section faq-list"><h2>Your questions, <em>answered.</em></h2>
+<details><summary>Where is Bambu restaurant?</summary><p>Find us at 28 O'Connell Street in Limerick City Centre. <a class="btn-text" href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">Get Directions &rarr;</a></p></details>
+<details><summary>What are the opening hours?</summary><p>Monday to Saturday, 17:00–22:45, and Sunday, 14:00–22:00.</p></details>
+<details><summary>What Indian dishes do you serve?</summary><p>Our menu includes Chicken Tikka Masala, Biryani, Butter Chicken, Rogan Josh, Korma, Vindaloo, Balti, tandoori specialities, Onion Bhaji and Samosas. <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">See the Menu</a>.</p></details>
+<details><summary>Do you serve Thai food?</summary><p>Yes. Explore Pad Thai, Green Curry, Red Curry, Tom Yum Soup, Massaman Curry and Thai Fried Rice in our <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">Menu</a>.</p></details>
+<details><summary>Can you help with halal, vegetarian or vegan requirements?</summary><p>Please contact our team to confirm halal sourcing and the suitability of individual dishes for your dietary requirements before ordering.</p></details>
+<details><summary>Can I book a table or order online?</summary><p><a href="#" class="btn-book">Book a table</a>, call <a href="tel:+35361217661">+353 61 217 661</a>, or <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">order online</a>.</p></details></section></main>
+<?php get_footer(); ?>

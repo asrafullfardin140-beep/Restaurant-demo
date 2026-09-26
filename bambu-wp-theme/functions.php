@@ -40,6 +40,16 @@ function bambu_enqueue_scripts() {
         '1.0'
     );
 
+    // Gallery page styles are kept separate so the homepage stays lean.
+    if ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) {
+        wp_enqueue_style(
+            'bambu-gallery-style',
+            get_template_directory_uri() . '/assets/css/gallery.css',
+            [ 'bambu-main-style' ],
+            '1.0'
+        );
+    }
+
     // 3. EmailJS — loaded in <head> so it's available when our script runs
     wp_enqueue_script(
         'emailjs',
@@ -57,6 +67,16 @@ function bambu_enqueue_scripts() {
         '1.0',
         true // load in footer
     );
+
+    if ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) {
+        wp_enqueue_script(
+            'bambu-gallery-script',
+            get_template_directory_uri() . '/assets/js/gallery.js',
+            [ 'bambu-script' ],
+            '1.0',
+            true
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'bambu_enqueue_scripts' );
 

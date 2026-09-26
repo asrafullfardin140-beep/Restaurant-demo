@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bambu Indian & Thai Restaurant, Limerick — Award-winning Indian and Thai cuisine in the heart of Limerick City. Book a table online or call +353 61 217 661.">
     <meta name="theme-color" content="#0f0d0c">
-    <link rel="preload" href="<?php echo esc_url( get_template_directory_uri() . '/assets/anim-1.webp' ); ?>" as="image" type="image/webp" fetchpriority="high">
-    <?php wp_head(); ?>
+    <?php
+    $bambu_preload_image = ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) )
+        ? '/assets/anim-11.webp'
+        : '/assets/anim-1.webp';
+    ?>
+    <link rel="preload" href="<?php echo esc_url( get_template_directory_uri() . $bambu_preload_image ); ?>" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/css/site-pages.css">
+<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/site-pages.js"></script>
 
 <?php
 // Preload frequently used URI
@@ -64,9 +71,12 @@ $t = get_template_directory_uri();
             <!-- Desktop navigation links -->
             <div class="nav-links">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>#home">HOME</a>
+<a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">OUR STORY</a>
+<a href="<?php echo esc_url( home_url( '/visit/' ) ); ?>">VISIT &amp; FAQs</a>
+                <a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"<?php echo ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) ? ' aria-current="page"' : ''; ?>>GALLERY</a>
                 <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
                 <span class="nav-separator"></span>
-                <a href="<?php echo esc_url( $t ); ?>/assets/menu.pdf" target="_blank" class="btn-nav" id="open-menu-btn">MENU</a>
+                <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>" class="btn-nav">MENU</a>
                 <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="btn-nav">ORDER ONLINE</a>
                 <a href="#" class="btn-nav btn-book">BOOK A TABLE</a>
             </div>
@@ -74,8 +84,11 @@ $t = get_template_directory_uri();
             <!-- Mobile dropdown navigation -->
             <div class="mobile-nav-menu" id="mobile-nav-menu">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>#home">HOME</a>
+<a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">OUR STORY</a>
+<a href="<?php echo esc_url( home_url( '/visit/' ) ); ?>">VISIT &amp; FAQs</a>
+                <a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"<?php echo ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) ? ' aria-current="page"' : ''; ?>>GALLERY</a>
                 <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
-                <a href="#" id="open-menu-mobile">MENU</a>
+                <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">MENU</a>
                 <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">ORDER ONLINE</a>
                 <a href="tel:+35361217661">CALL NOW &mdash; +353 61 217 661</a>
                 <a href="#" class="btn-book">BOOK A TABLE</a>

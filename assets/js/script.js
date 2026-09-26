@@ -123,6 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.classList.remove('show');
             }
         });
+
+        // Open the booking form when another page links to ?book=1.
+        const pageParams = new URLSearchParams(window.location.search);
+        if (pageParams.get('book') === '1') {
+            modal.classList.add('show');
+            window.history.replaceState({}, '', `${window.location.pathname}${window.location.hash}`);
+        }
     }
 
     // ============================================================
