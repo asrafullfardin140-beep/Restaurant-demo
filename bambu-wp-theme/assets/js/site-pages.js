@@ -22,6 +22,48 @@
    logo.src = new URL('../logo.webp', script.src).href;
  }
  document.addEventListener('DOMContentLoaded', () => {
+   const video = document.querySelector('.hero-video');
+   const control = document.querySelector('.hero-video-toggle');
+   if (video && control) {
+     const viewport = matchMedia('(max-width: 768px)');
+     const motion = matchMedia('(prefers-reduced-motion: reduce)');
+     let wanted = !motion.matches && !navigator.connection?.saveData;
+     let visible = true;
+     let selected = '';
+     const label = () => { control.textContent = video.paused ? 'Play background video' : 'Pause background video'; };
+     const source = () => {
+       const next = viewport.matches ? video.dataset.mobile : video.dataset.desktop;
+       if (selected === next) return;
+       selected = next;
+       video.classList.remove('is-playing');
+       video.src = next;
+       video.load();
+     };
+     const sync = () => {
+       if (wanted && visible && !document.hidden) {
+         source();
+         video.muted = true;
+         video.play().catch(label);
+       } else video.pause();
+       label();
+     };
+     video.addEventListener('playing', () => { video.classList.add('is-playing'); label(); });
+     video.addEventListener('pause', label);
+     video.addEventListener('error', () => { video.classList.remove('is-playing'); control.hidden = true; });
+     control.hidden = false;
+     control.addEventListener('click', () => { wanted = video.paused; sync(); });
+     viewport.addEventListener('change', () => {
+       if (selected) { video.pause(); video.removeAttribute('src'); video.load(); selected = ''; video.classList.remove('is-playing'); }
+       sync();
+     });
+     motion.addEventListener('change', () => { wanted = !motion.matches && !navigator.connection?.saveData; sync(); });
+     document.addEventListener('visibilitychange', sync);
+     if ('IntersectionObserver' in window) {
+       new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, {threshold:0})
+         .observe(video.closest('.hero'));
+     } else sync();
+   }
+
    const toggle = document.querySelector('.menu-toggle'), menu = document.querySelector('.mobile-nav-menu');
    if(toggle && menu) {
      toggle.setAttribute('aria-controls','mobile-nav-menu');

@@ -9,57 +9,22 @@ get_header();
 
 $t = get_template_directory_uri();
 
-// Desktop & Mobile hero slideshow images (shared set)
-$slides = [
-    [ 'file' => 'anim-1.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-2.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-3.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-4.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-5.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-6.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-7.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-8.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-9.webp',   'ext' => 'webp'  ],
-    [ 'file' => 'anim-10.webp',  'ext' => 'webp'  ],
-    [ 'file' => 'anim-11.webp',  'ext' => 'webp'  ],
-];
 ?>
 
     <!-- ═══════════════════════════════ HERO SECTION ══════════════════════════════ -->
     <main>
         <section id="home" class="hero">
 
-            <!-- Desktop Slideshow -->
-            <div class="hero-bg desktop-bg">
-                <?php foreach ( $slides as $i => $slide ) :
-                    $num = $i + 1;
-                    $url = esc_url( $t . '/assets/' . $slide['file'] );
-                ?>
-                <div class="hero-slide slide-<?php echo $num; ?>"
-                     <?php if ( $i === 0 ) : ?>
-                         style="background-image: url('<?php echo $url; ?>');"
-                     <?php else : ?>
-                         data-bg="<?php echo $url; ?>"
-                     <?php endif; ?>
-                     aria-hidden="true"></div>
-                <?php endforeach; ?>
+            <div class="hero-bg hero-video-bg" aria-hidden="true">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="<?php echo esc_url( $t ); ?>/assets/video/hero-mobile.webp">
+                    <img class="hero-video-poster" src="<?php echo esc_url( $t ); ?>/assets/video/hero-desktop.webp" alt="" fetchpriority="high">
+                </picture>
+                <video class="hero-video" muted loop playsinline preload="none" tabindex="-1"
+                    data-mobile="<?php echo esc_url( $t ); ?>/assets/video/hero-mobile.mp4"
+                    data-desktop="<?php echo esc_url( $t ); ?>/assets/video/hero-desktop.mp4"></video>
             </div>
-
-            <!-- Mobile Slideshow -->
-            <div class="hero-bg mobile-bg">
-                <?php foreach ( $slides as $i => $slide ) :
-                    $num = $i + 1;
-                    $url = esc_url( $t . '/assets/' . $slide['file'] );
-                ?>
-                <div class="hero-slide m-slide-<?php echo $num; ?>"
-                     <?php if ( $i === 0 ) : ?>
-                         style="background-image: url('<?php echo $url; ?>');"
-                     <?php else : ?>
-                         data-bg="<?php echo $url; ?>"
-                     <?php endif; ?>
-                     aria-hidden="true"></div>
-                <?php endforeach; ?>
-            </div>
+            <button class="hero-video-toggle" type="button" hidden>Play background video</button>
 
             <div class="hero-overlay"></div>
 

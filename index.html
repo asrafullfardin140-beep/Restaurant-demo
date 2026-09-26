@@ -153,35 +153,16 @@
     <main>
         <section id="home" class="hero">
 
-            <!-- Desktop Slideshow -->
-            <div class="hero-bg desktop-bg">
-                <div class="hero-slide slide-1" style="background-image: url('assets/anim-1.webp');" aria-hidden="true"></div>
-                <div class="hero-slide slide-2" data-bg="assets/anim-2.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-3" data-bg="assets/anim-3.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-4" data-bg="assets/anim-4.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-5" data-bg="assets/anim-5.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-6" data-bg="assets/anim-6.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-7" data-bg="assets/anim-7.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-8" data-bg="assets/anim-8.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-9" data-bg="assets/anim-9.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-10" data-bg="assets/anim-10.webp" aria-hidden="true"></div>
-                <div class="hero-slide slide-11" data-bg="assets/anim-11.webp" aria-hidden="true"></div>
+            <div class="hero-bg hero-video-bg" aria-hidden="true">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="assets/video/hero-mobile.webp">
+                    <img class="hero-video-poster" src="assets/video/hero-desktop.webp" alt="" fetchpriority="high">
+                </picture>
+                <video class="hero-video" muted loop playsinline preload="none" tabindex="-1"
+                    data-mobile="assets/video/hero-mobile.mp4"
+                    data-desktop="assets/video/hero-desktop.mp4"></video>
             </div>
-
-            <!-- Mobile Slideshow -->
-            <div class="hero-bg mobile-bg">
-                <div class="hero-slide m-slide-1" style="background-image: url('assets/anim-1.webp');" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-2" data-bg="assets/anim-2.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-3" data-bg="assets/anim-3.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-4" data-bg="assets/anim-4.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-5" data-bg="assets/anim-5.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-6" data-bg="assets/anim-6.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-7" data-bg="assets/anim-7.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-8" data-bg="assets/anim-8.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-9" data-bg="assets/anim-9.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-10" data-bg="assets/anim-10.webp" aria-hidden="true"></div>
-                <div class="hero-slide m-slide-11" data-bg="assets/anim-11.webp" aria-hidden="true"></div>
-            </div>
+            <button class="hero-video-toggle" type="button" hidden>Play background video</button>
 
             <div class="hero-overlay"></div>
 
