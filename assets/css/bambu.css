@@ -336,6 +336,16 @@ em {
     z-index: -1;
 }
 
+.hero-content {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
 .hero-content h1 {
     font-size: 5rem;
     line-height: 1.1;
@@ -368,7 +378,7 @@ em {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
 }
 
@@ -455,25 +465,33 @@ em {
     pointer-events: none;
 }
 
-/* ── HOVER STATES ── */
-.btn-solid:hover {
+/* ── HOVER & ACTIVE (Touch/Mobile) STATES ── */
+.btn-solid:hover,
+.btn-solid:active,
+.btn-solid:focus-visible {
     border-color: var(--accent-gold);
 }
 
 /* Label slides right and disappears */
-.btn-solid:hover .btn-label {
+.btn-solid:hover .btn-label,
+.btn-solid:active .btn-label,
+.btn-solid:focus-visible .btn-label {
     transform: translateX(2.5rem);
     opacity: 0;
 }
 
 /* Hover inner slides in from right */
-.btn-solid:hover .btn-hover-inner {
+.btn-solid:hover .btn-hover-inner,
+.btn-solid:active .btn-hover-inner,
+.btn-solid:focus-visible .btn-hover-inner {
     transform: translateX(0);
     opacity: 1;
 }
 
 /* Circle expands from centre to flood button */
-.btn-solid:hover .btn-fill {
+.btn-solid:hover .btn-fill,
+.btn-solid:active .btn-fill,
+.btn-solid:focus-visible .btn-fill {
     transform: translate(-50%, -50%) scale(30);
     opacity: 1;
 }
@@ -566,18 +584,26 @@ em {
     pointer-events: none;
 }
 
-.btn-nav:hover {
+.btn-nav:hover,
+.btn-nav:active,
+.btn-nav:focus-visible {
     border-color: var(--accent-gold);
 }
-.btn-nav:hover .btn-label {
+.btn-nav:hover .btn-label,
+.btn-nav:active .btn-label,
+.btn-nav:focus-visible .btn-label {
     transform: translateX(2rem);
     opacity: 0;
 }
-.btn-nav:hover .btn-hover-inner {
+.btn-nav:hover .btn-hover-inner,
+.btn-nav:active .btn-hover-inner,
+.btn-nav:focus-visible .btn-hover-inner {
     transform: translateX(0);
     opacity: 1;
 }
-.btn-nav:hover .btn-fill {
+.btn-nav:hover .btn-fill,
+.btn-nav:active .btn-fill,
+.btn-nav:focus-visible .btn-fill {
     transform: translate(-50%, -50%) scale(25);
     opacity: 1;
 }
@@ -1116,6 +1142,11 @@ footer {
         background-position: center center;
         background-size: 170%;
     }
+    .hero-content {
+        width: 100%;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
     .hero-content h1 {
         font-size: 2.8rem;
     }
@@ -1124,17 +1155,23 @@ footer {
         padding: 0 1rem;
     }
     .hero-buttons {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
         max-width: 260px;
+        margin: 0 auto;
+        gap: 0.85rem;
     }
     .btn-solid {
-        width: 100%;
-        min-width: unset;
+        width: 250px !important;
+        max-width: 100%;
+        min-width: 220px;
         padding: 0.8rem 1.5rem;
         font-size: 0.72rem;
         letter-spacing: 2px;
         justify-content: center;
+        box-sizing: border-box;
     }
     .logo-img {
         width: 52px;
@@ -1256,12 +1293,15 @@ footer {
         font-size: 1.9rem;
     }
     .hero-buttons {
-        max-width: 220px;
+        max-width: 240px;
     }
     .btn-solid {
+        width: 230px !important;
+        max-width: 100%;
         font-size: 0.68rem;
         letter-spacing: 1.5px;
         padding: 0.75rem 1.2rem;
+        box-sizing: border-box;
     }
     .logo-img {
         width: 44px;
