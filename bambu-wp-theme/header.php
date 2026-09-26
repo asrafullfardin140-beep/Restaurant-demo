@@ -89,9 +89,6 @@ $t = get_template_directory_uri();
                 <a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"<?php echo ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) ? ' aria-current="page"' : ''; ?>>GALLERY</a>
                 <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
                 <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">MENU</a>
-                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">ORDER ONLINE</a>
-                <a href="tel:+35361217661">CALL NOW &mdash; +353 61 217 661</a>
-                <a href="#" class="btn-book">BOOK A TABLE</a>
             </div>
 
         </div>
