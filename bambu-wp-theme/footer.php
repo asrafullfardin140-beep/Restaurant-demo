@@ -9,90 +9,14 @@ $t = get_template_directory_uri();
 ?>
 
     <!-- ═══════════════════════════════ SITE FOOTER ═══════════════════════════════ -->
-    <footer id="contact">
-
-        <!-- Top row: Find Us | Open | Reserve -->
-        <div class="footer-top">
-            <div class="footer-col-center">
-                <h5>FIND US</h5>
-                <p class="big-text">28 O'Connell Street</p>
-                <p>Limerick City, Ireland</p>
-            </div>
-            <div class="footer-col-center border-sides">
-                <h5>OPEN</h5>
-                <p class="big-text">Mon &ndash; Sat</p>
-                <p>17:00 &ndash; 22:45</p>
-                <p class="big-text" style="font-size: 1.2rem; margin-top: 0.8rem;">Sunday</p>
-                <p>14:00 &ndash; 22:00</p>
-            </div>
-            <div class="footer-col-center">
-                <h5>RESERVE</h5>
-                <p class="big-text">+353 61 217 661</p>
-                <a href="tel:+35361217661" class="link-text">CALL NOW</a>
-                <a href="#" class="link-text btn-book" style="display:block; margin-top:0.5rem;">BOOK ONLINE</a>
-            </div>
-        </div>
-
-        <!-- Middle row: Logo/desc | Links/hours -->
-        <div class="footer-middle">
-            <div class="footer-info">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-container">
-                    <img src="<?php echo esc_url( $t ); ?>/assets/logo.jpg"
-                         alt="Bambu Restaurant Logo" class="logo-img">
-                    <div class="logo-text">
-                        <span class="logo-title">Bambu</span>
-                    </div>
-                </a>
-                <p class="desc">Indian &amp; Thai cooking on the banks of the<br>
-                Shannon &mdash; two great traditions, one quiet dining<br>room in Limerick.</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-visit">
-                    <h5>VISIT</h5>
-                    <p>28 O'Connell Street<br>Limerick City, Ireland</p>
-                    <p class="mt-2">+353 61 217 661<br>
-                    <a href="mailto:info@bamburestaurant.ie" style="color:inherit;">info@bamburestaurant.ie</a></p>
-                </div>
-                <div class="footer-hours">
-                    <h5>HOURS</h5>
-                    <p>Mon, Tue, Wed, Thu &ndash; Sat &middot; 17:00 &ndash; 22:45</p>
-                    <p>Sunday &middot; 14:00 &ndash; 22:00</p>
-                    <div class="socials mt-2">
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/bambu_restaurant_limerick/"
-                           target="_blank" rel="noopener" aria-label="Bambu on Instagram">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/bambulimerick"
-                           target="_blank" rel="noopener" aria-label="Bambu on Facebook">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom row: copyright -->
-        <div class="footer-bottom">
-            <p>&copy; <?php echo date( 'Y' ); ?> Bambu Indian &amp; Thai Restaurant. All rights reserved.</p>
-            <div class="bottom-links">
-                <a href="#" class="btn-book">Book a table</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-
-    </footer>
+    <footer id="contact" class="site-footer">
+ <div class="footer-layout">
+  <div class="footer-brand"><a class="logo-container" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Bambu home"><img class="logo-img" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/logo.webp" alt="" width="68" height="68" loading="lazy"><span class="logo-title">Bambu</span></a><p class="footer-tagline">Indian &amp; Thai · Limerick</p></div>
+  <div class="footer-details"><section><h2>Visit us</h2><address>28 O'Connell Street<br>Limerick City, Ireland</address><a href="tel:+35361217661">+353 61 217 661</a><a href="mailto:info@bamburestaurant.ie">info@bamburestaurant.ie</a><a class="footer-direction" href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">Get Directions ↗</a></section><section><h2>Opening hours</h2><p>Monday–Saturday<br>17:00–22:45</p><p>Sunday<br>14:00–22:00</p></section></div>
+  <div class="footer-about"><p>Indian &amp; Thai cooking on the banks of the Shannon — two great traditions, one quiet dining room in Limerick.</p><a href="<?php echo esc_url( home_url( '/visit/' ) ); ?>">Visit &amp; FAQs →</a></div>
+ </div>
+ <div class="footer-strip"><div class="footer-social"><a href="https://www.instagram.com/bambu_restaurant_limerick/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/bambulimerick" target="_blank" rel="noopener">Facebook</a></div><p>© 2026 Bambu Indian &amp; Thai Restaurant. All rights reserved.</p><p>Designed &amp; Developed by <a href="https://www.cybromarketing.com" target="_blank" rel="noopener">Cybro Marketing</a></p></div>
+</footer>
     <!-- ════════════════════════════ END SITE FOOTER ══════════════════════════════ -->
 
 

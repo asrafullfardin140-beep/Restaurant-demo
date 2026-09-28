@@ -69,17 +69,7 @@ $t = get_template_directory_uri();
             </div>
 
             <!-- Desktop navigation links -->
-            <div class="nav-links">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>#home">HOME</a>
-<a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">OUR STORY</a>
-<a href="<?php echo esc_url( home_url( '/visit/' ) ); ?>">VISIT &amp; FAQs</a>
-                <a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"<?php echo ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) ? ' aria-current="page"' : ''; ?>>GALLERY</a>
-                <a href="https://maps.app.goo.gl/QWcCknw64kSChXoe8" target="_blank" rel="noopener">GET DIRECTIONS</a>
-                <span class="nav-separator"></span>
-                <a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>" class="btn-nav">MENU</a>
-                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="btn-nav">ORDER ONLINE</a>
-                <a href="#" class="btn-nav btn-book">BOOK A TABLE</a>
-            </div>
+            <div class="nav-links"><a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">Our Story</a><a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">Menu</a><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">Gallery</a><a class="desktop-order" href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">Order Now</a><a class="desktop-book btn-book" href="#">Book a Table</a></div>
 
             <!-- Mobile dropdown navigation -->
             <div class="mobile-nav-menu" id="mobile-nav-menu">
