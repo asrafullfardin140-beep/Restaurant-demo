@@ -28,10 +28,9 @@
  .navbar .nav-links a:hover{color:#ceaa7b}
  .navbar .nav-links .desktop-book:hover{background:#e6c79f;color:#16120e}
 }
-.hero-buttons .btn-solid{background:#171310;color:#fff4e5;border:1px solid #e0bc8d;min-height:48px;box-shadow:0 3px 16px #0005;font-weight:700}
-.hero-buttons .btn-solid.btn-book{background:#dfbb8b;color:#171310;border-color:#dfbb8b}
+.hero-buttons .btn-solid{background:#dfbb8b;color:#171310;border:1px solid #dfbb8b;min-height:48px;box-shadow:0 3px 16px #0005;font-weight:700;transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease}
 .hero-buttons .btn-solid .btn-fill,.hero-buttons .btn-solid .btn-hover-inner{display:none}
-.hero-buttons .btn-solid:hover,.hero-buttons .btn-solid:active,.hero-buttons .btn-solid:focus-visible{background:#f0d3ac;color:#171310;border-color:#f0d3ac}
+.hero-buttons .btn-solid:hover,.hero-buttons .btn-solid:active,.hero-buttons .btn-solid:focus-visible{background:#f0d3ac;color:#171310;border-color:#f0d3ac;box-shadow:0 0 16px #dfbb8b99,0 0 32px #dfbb8b55}
 .hero-buttons .btn-solid .btn-label{opacity:1!important;transform:none!important}
 footer.site-footer{background:#13110f;padding:72px 32px 0;border-top:1px solid #ceaa7b30;color:#d5c9ba;text-align:left}
 .site-footer .footer-layout{max-width:1280px;margin:auto;display:grid;grid-template-columns:1fr 2fr 1.2fr;gap:48px;padding-bottom:56px}
@@ -53,3 +52,5 @@ footer.site-footer{background:#13110f;padding:72px 32px 0;border-top:1px solid #
 .site-footer .footer-social a{display:flex;align-items:center;min-height:44px}
 @media(max-width:1099px){.site-footer .footer-layout{grid-template-columns:1fr 2fr}.site-footer .footer-about{grid-column:1/-1;max-width:500px}.site-footer .footer-strip{flex-wrap:wrap}}
 @media(max-width:600px){footer.site-footer{padding:48px 24px 0}.site-footer .footer-layout{grid-template-columns:1fr;gap:32px;padding-bottom:32px}.site-footer .footer-details{gap:24px}.site-footer .footer-strip{display:grid;gap:12px}.site-footer .footer-about{grid-column:auto}}
+
+@media(prefers-reduced-motion:reduce){.hero-buttons .btn-solid{transition:none}}
