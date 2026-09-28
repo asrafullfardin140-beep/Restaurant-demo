@@ -22,6 +22,33 @@
    logo.src = new URL('../logo.webp', script.src).href;
  }
  document.addEventListener('DOMContentLoaded', () => {
+   const navbar = document.querySelector('.navbar');
+   const heroActions = document.querySelector('.hero .hero-buttons');
+   if (navbar && heroActions && 'IntersectionObserver' in window) {
+     navbar.classList.add('mobile-hero-header');
+     new IntersectionObserver(([entry]) => {
+       navbar.classList.toggle('show-mobile-actions', !entry.isIntersecting && entry.boundingClientRect.bottom < 110);
+     }, {rootMargin:'-110px 0px 0px 0px', threshold:0}).observe(heroActions);
+   }
+   const counter = document.querySelector('.menu-page-counter');
+   if (counter) {
+     const controls = document.createElement('div');
+     controls.className = 'menu-counter-controls';
+     counter.before(controls);
+     controls.append(counter);
+     for (const [direction, label, symbol] of [['prev','Previous menu page','‹'],['next','Next menu page','›']]) {
+       const original = document.getElementById('menu-' + direction);
+       if (!original) continue;
+       const button = document.createElement('button');
+       button.type = 'button'; button.className = 'menu-side-arrow menu-side-' + direction;
+       button.setAttribute('aria-label', label); button.textContent = symbol;
+       const sync = () => { button.disabled = original.disabled; };
+       sync(); new MutationObserver(sync).observe(original,{attributes:true,attributeFilter:['disabled']});
+       button.addEventListener('click', () => original.click());
+       if (direction === 'prev') controls.prepend(button); else controls.append(button);
+     }
+   }
+
    const video = document.querySelector('.hero-video');
    const control = document.querySelector('.hero-video-toggle');
    if (video && control) {

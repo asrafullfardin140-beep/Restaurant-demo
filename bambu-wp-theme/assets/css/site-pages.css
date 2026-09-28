@@ -54,3 +54,20 @@ footer.site-footer{background:#13110f;padding:72px 32px 0;border-top:1px solid #
 @media(max-width:600px){footer.site-footer{padding:48px 24px 0}.site-footer .footer-layout{grid-template-columns:1fr;gap:32px;padding-bottom:32px}.site-footer .footer-details{gap:24px}.site-footer .footer-strip{display:grid;gap:12px}.site-footer .footer-about{grid-column:auto}}
 
 @media(prefers-reduced-motion:reduce){.hero-buttons .btn-solid{transition:none}}
+
+.menu-counter-controls{display:flex;align-items:center;gap:8px}
+.menu-side-arrow{position:absolute;top:50%;z-index:3;width:48px;height:48px;border:1px solid #ceaa7b;border-radius:50%;background:#171310;color:#dfbb8b;font-size:32px;line-height:1;cursor:pointer;box-shadow:0 2px 12px #0006}
+.menu-side-prev{left:16px}.menu-side-next{right:16px}
+.menu-side-arrow:hover:not(:disabled){background:#dfbb8b;color:#171310}
+.menu-side-arrow:disabled{opacity:.3;cursor:default}
+@media(min-width:769px){.menu-pages-wrapper{padding-left:80px;padding-right:80px}}
+@media(max-width:768px){
+ .hero-buttons .btn-solid{width:190px!important;min-width:0;max-width:100%;min-height:44px}
+ .mobile-hero-header:not(.show-mobile-actions) .calendar-btn,.mobile-hero-header:not(.show-mobile-actions) .mobile-actions.right{opacity:0;visibility:hidden;pointer-events:none}
+ .mobile-hero-header .calendar-btn,.mobile-hero-header .mobile-actions.right{transition:opacity .2s ease,visibility .2s ease}
+ .mobile-hero-header.show-mobile-actions{background:#100e0df5}
+ .menu-side-arrow{position:static;flex-shrink:0;width:44px;height:44px;font-size:28px}
+ .menu-counter-controls{gap:4px}
+ .menu-page-counter{letter-spacing:0;white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.mobile-hero-header .calendar-btn,.mobile-hero-header .mobile-actions.right{transition:none}}
