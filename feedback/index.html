@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Your experience · Bambu</title>
+<link rel="stylesheet" href="/assets/css/feedback.css">
+<script src="/assets/js/feedback.js" defer></script>
+</head>
+<body>
+<main class="feedback-card">
+<a class="brand" href="/" aria-label="Bambu home"><img src="/assets/logo.webp" width="88" height="88" alt="Bambu"><span>BAMBU</span></a>
+<p class="eyebrow">INDIAN &amp; THAI · LIMERICK</p>
+<section id="rating-screen">
+<h1>How was your<br><em>experience?</em></h1>
+<p>Thank you for dining with us. Tap a star to share how your visit felt.</p>
+<div class="stars" role="group" aria-label="Rate your experience from one to five stars">
+<button type="button" data-rating="1" aria-label="1 star"><span aria-hidden="true">★</span><small>1</small></button>
+<button type="button" data-rating="2" aria-label="2 stars"><span aria-hidden="true">★</span><small>2</small></button>
+<button type="button" data-rating="3" aria-label="3 stars"><span aria-hidden="true">★</span><small>3</small></button>
+<button type="button" data-rating="4" aria-label="4 stars"><span aria-hidden="true">★</span><small>4</small></button>
+<button type="button" data-rating="5" aria-label="5 stars"><span aria-hidden="true">★</span><small>5</small></button>
+</div>
+<div class="scale"><span>Disappointed</span><span>Wonderful</span></div>
+<p class="note">This selection is not a published Google review. Ratings of 1–2 open private feedback; ratings of 3–5 open Google, where you can choose your rating and submit a review.</p>
+</section>
+<section id="private-screen" hidden>
+<p class="eyebrow" id="selected-rating"></p>
+<h1 tabindex="-1" id="private-title">We’re sorry.</h1>
+<p>Your visit should have been better. Please tell us what we could improve.</p>
+<form id="feedback-form">
+<label for="guest-name">Your name <span>(optional)</span></label>
+<input id="guest-name" name="name" autocomplete="name" maxlength="100">
+<label for="guest-feedback">What could we improve? <span>(optional)</span></label>
+<textarea id="guest-feedback" name="feedback" rows="4" maxlength="3000"></textarea>
+<p class="note">Online submission is coming soon. The button below opens your email app with your feedback addressed to info@bambu.ie. Nothing is sent or saved by this website.</p>
+<button class="primary" type="submit">Open email to Bambu ↗</button>
+<p id="email-status" role="status"></p>
+</form>
+<a class="skip" href="/">Skip and return to Bambu</a>
+<button class="back" type="button" id="change-rating">Change my rating</button>
+</section>
+<noscript><p>Please enable JavaScript to use the rating buttons, or email <a href="mailto:info@bambu.ie">info@bambu.ie</a>.</p></noscript>
+<footer>28 O’Connell Street · Limerick</footer>
+</main>
+</body>
+</html>
