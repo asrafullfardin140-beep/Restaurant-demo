@@ -1,1 +1,41 @@
 :root{color-scheme:dark;font-family:Arial,sans-serif;color:#eee5d8;background:#100e0c}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:32px 20px;background:radial-gradient(ellipse at top,#30261b 0, #100e0c 65%)}.feedback-card{width:100%;max-width:490px;text-align:center}.brand{display:inline-flex;flex-direction:column;align-items:center;gap:16px;color:#dfbb8b;text-decoration:none;letter-spacing:6px;font-size:25px}.brand img{border-radius:50%;background:white}.eyebrow{font-size:11px;letter-spacing:2px;color:#dfbb8b;margin:14px 0 32px}h1{font-family:Georgia,serif;font-size:clamp(34px,8vw,48px);line-height:1.12;font-weight:400;margin:24px 0}h1 em{color:#dfbb8b}p{line-height:1.7;color:#cfc4b5;font-size:15px}.stars{display:flex;justify-content:space-between;gap:5px;margin-top:28px}.stars button{flex:1;min-width:44px;min-height:64px;border:1px solid #705e47;border-radius:12px;background:#1c1712;color:#dfbb8b;cursor:pointer;padding:10px 2px}.stars span{font-size:32px}.stars small{display:block;margin-top:4px;font-size:12px}.stars button:hover,.stars button:focus-visible{background:#dfbb8b;color:#171310;box-shadow:0 0 18px #dfbb8b55}.scale{display:flex;justify-content:space-between;color:#bcb09f;font-size:12px;margin-top:10px}.note{font-size:12px;color:#b5aa9c;margin-top:25px}form{text-align:left}label{display:block;margin:20px 0 9px;font-size:14px}label span{color:#b5aa9c;font-size:12px}input,textarea{width:100%;background:#1c1712;border:1px solid #705e47;border-radius:8px;padding:12px;color:#fff;font:inherit;font-size:16px}textarea{resize:vertical}.primary{width:100%;background:#dfbb8b;color:#171310;border:0;border-radius:30px;min-height:48px;font-size:14px;font-weight:bold;cursor:pointer;margin:10px 0}.skip,.back{display:block;margin:12px auto;color:#dfbb8b;font-size:14px;min-height:44px;padding:12px}.back{background:none;border:none;cursor:pointer}.skip{text-decoration:none}a{color:#dfbb8b}footer{border-top:1px solid #dfbb8b25;margin-top:36px;padding-top:24px;font-size:12px;color:#a99c8c}:focus-visible{outline:2px solid #f5d7ad;outline-offset:4px}[hidden]{display:none!important}
+
+/* Fit small phones, browser chrome and on-screen keyboards without clipping. */
+html{-webkit-text-size-adjust:100%;scroll-padding-block:24px}
+body{padding:32px 20px;padding-top:max(24px,env(safe-area-inset-top));padding-right:max(20px,env(safe-area-inset-right));padding-bottom:max(24px,env(safe-area-inset-bottom));padding-left:max(20px,env(safe-area-inset-left))}
+.feedback-card{min-width:0;margin:auto}
+button,input,textarea,a{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+button{font-family:inherit}
+p,footer{overflow-wrap:anywhere}
+.stars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.stars button{min-width:0;min-height:76px}
+input{min-height:50px}
+input,textarea{border-radius:12px;scroll-margin-block:24px;line-height:1.5}
+textarea{min-height:132px}
+.primary{min-height:52px;padding:14px 20px;font-size:16px;margin-top:24px}
+.primary:active,.stars button:active{background:#f0d3ac;color:#171310}
+.email-help{text-align:center;margin:10px 0 0;line-height:1.6}
+#email-status:empty{display:none}
+.skip,.back{width:100%;margin:4px auto;font-size:14px}
+#selected-rating{margin:20px 0 0}
+#private-title{margin-top:12px}
+@media(hover:hover){.primary:hover{background:#f0d3ac;box-shadow:0 0 20px #dfbb8b50}}
+@media(max-width:600px){
+ body{display:block}
+ .brand{gap:10px;font-size:22px}
+ .brand img{width:72px;height:72px}
+ .eyebrow{margin:12px 0 24px;font-size:10px;letter-spacing:1.7px}
+ h1{font-size:36px;margin:22px 0 16px}
+ p{font-size:15px;line-height:1.6}
+ .stars{margin-top:24px}
+ .note{font-size:13px;margin-top:20px}
+ .email-help{margin-top:10px}
+ footer{margin-top:24px;padding-top:20px;line-height:1.6}
+}
+@media(max-width:350px){
+ body{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+ .stars{gap:6px}.stars span{font-size:28px}
+ h1{font-size:32px}
+}
+@media(max-height:600px) and (orientation:landscape){.brand img{width:56px;height:56px}.brand{gap:8px}body{display:block}}

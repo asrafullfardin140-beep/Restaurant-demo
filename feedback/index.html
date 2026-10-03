@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Your experience · Bambu</title>
 <link rel="stylesheet" href="/assets/css/feedback.css">
@@ -31,11 +31,11 @@
 <p>Your visit should have been better. Please tell us what we could improve.</p>
 <form id="feedback-form">
 <label for="guest-name">Your name <span>(optional)</span></label>
-<input id="guest-name" name="name" autocomplete="name" maxlength="100">
+<input id="guest-name" name="name" autocomplete="name" maxlength="100" autocapitalize="words" enterkeyhint="next">
 <label for="guest-feedback">What could we improve? <span>(optional)</span></label>
-<textarea id="guest-feedback" name="feedback" rows="4" maxlength="3000"></textarea>
-<p class="note">Online submission is coming soon. The button below opens your email app with your feedback addressed to info@bambu.ie. Nothing is sent or saved by this website.</p>
-<button class="primary" type="submit">Open email to Bambu ↗</button>
+<textarea id="guest-feedback" name="feedback" rows="4" maxlength="3000" aria-describedby="email-help"></textarea>
+<button class="primary" type="submit" aria-describedby="email-help">Send your feedback</button>
+<p class="note email-help" id="email-help">Opens your email app to send your feedback to <a href="mailto:info@bambu.ie">info@bambu.ie</a>. Nothing is sent or saved by this website.</p>
 <p id="email-status" role="status"></p>
 </form>
 <a class="skip" href="/">Skip and return to Bambu</a>
