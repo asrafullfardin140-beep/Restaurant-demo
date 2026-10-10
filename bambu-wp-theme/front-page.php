@@ -17,12 +17,12 @@ $t = get_template_directory_uri();
 
             <div class="hero-bg hero-video-bg" aria-hidden="true">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="<?php echo esc_url( $t ); ?>/assets/video/hero-mobile.webp">
-                    <img class="hero-video-poster" src="<?php echo esc_url( $t ); ?>/assets/video/hero-desktop.webp" alt="" fetchpriority="high">
+                    <source media="(max-width: 768px)" srcset="<?php echo esc_url( $t ); ?>/assets/video/hero-cover-2026-10.webp">
+                    <img class="hero-video-poster" src="<?php echo esc_url( $t ); ?>/assets/video/hero-cover-2026-10.webp" alt="" fetchpriority="high">
                 </picture>
                 <video class="hero-video" muted loop playsinline preload="none" tabindex="-1"
-                    data-mobile="<?php echo esc_url( $t ); ?>/assets/video/hero-mobile.mp4"
-                    data-desktop="<?php echo esc_url( $t ); ?>/assets/video/hero-desktop.mp4"></video>
+                    data-mobile="<?php echo esc_url( $t ); ?>/assets/video/hero-cover-2026-10.mp4"
+                    data-desktop="<?php echo esc_url( $t ); ?>/assets/video/hero-cover-2026-10.mp4"></video>
             </div>
             <button class="hero-video-toggle" type="button" hidden>Play background video</button>
 
