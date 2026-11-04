@@ -110,6 +110,11 @@ $t = get_template_directory_uri();
                     </div>
 
                 </div>
+                <!-- Spam trap: hidden from people, bots fill it in -->
+                <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+                    <label for="booking-website">Website</label>
+                    <input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <button type="submit" class="btn-orange" id="booking-submit-btn">Confirm Reservation</button>
             </form>
         </div>
