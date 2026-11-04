@@ -33,7 +33,7 @@ $t = get_template_directory_uri();
                 <h1 class="home-location-heading">Indian &amp; Thai Restaurant<br><em>in Limerick</em></h1><p class="typewriter-text home-tagline" id="typewriter-heading"></p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-solid btn-book">BOOK A TABLE</a>
-                    <a href="https://bambulimerick.ie/order-now"
+                    <a href="https://food-hub.ie/limerick/bambu-restaurant/4204725/ordernow"
                        target="_blank" rel="noopener"
                        class="btn-solid light">ORDER ONLINE</a>
                     <a href="tel:+35361217661" class="btn-solid">CALL NOW</a>

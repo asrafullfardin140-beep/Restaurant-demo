@@ -50,23 +50,16 @@ function bambu_enqueue_scripts() {
         );
     }
 
-    // 3. EmailJS — loaded in <head> so it's available when our script runs
-    wp_enqueue_script(
-        'emailjs',
-        'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js',
-        [],
-        null,
-        false // load in head
-    );
-
     // 4. Main site script
     wp_enqueue_script(
         'bambu-script',
         get_template_directory_uri() . '/assets/js/script.js',
-        [ 'emailjs' ],
-        '1.0',
+        [],
+        filemtime( get_template_directory() . '/assets/js/script.js' ),
         true // load in footer
     );
+
+    wp_localize_script( 'bambu-script', 'bambuBooking', array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
 
     if ( is_page_template( 'page-gallery.php' ) || is_page( 'gallery' ) ) {
         wp_enqueue_script(
@@ -90,3 +83,5 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'rsd_link' );
+
+require_once get_template_directory() . '/booking.php';

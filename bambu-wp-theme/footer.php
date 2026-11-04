@@ -35,7 +35,7 @@ $t = get_template_directory_uri();
                 <h2 id="booking-modal-title">Book Now!</h2>
             </div>
 
-            <form id="premium-booking-form" class="premium-form" novalidate>
+            <form id="premium-booking-form" class="premium-form">
                 <div class="premium-form-grid">
 
                     <!-- Date -->
@@ -84,33 +84,36 @@ $t = get_template_directory_uri();
                     <div class="form-group-premium">
                         <label for="booking-name"><span class="label-icon"></span> Name</label>
                         <input type="text" id="booking-name" name="guest_name"
-                               placeholder="Your Name" required class="dark-input">
+                               placeholder="Your Name" autocomplete="name" maxlength="120" required class="dark-input">
                     </div>
 
                     <!-- Phone -->
                     <div class="form-group-premium">
                         <label for="booking-phone"><span class="label-icon"></span> Phone</label>
                         <input type="tel" id="booking-phone" name="guest_phone"
-                               placeholder="Your Phone" required class="dark-input">
+                               placeholder="Your Phone" autocomplete="tel" maxlength="40" required class="dark-input">
                     </div>
 
                     <!-- Email (full width) -->
                     <div class="form-group-premium full-width">
                         <label for="booking-email"><span class="label-icon"></span> Email</label>
                         <input type="email" id="booking-email" name="guest_email"
-                               placeholder="Your Email" required class="dark-input">
+                               placeholder="Your Email" autocomplete="email" maxlength="254" required class="dark-input">
                     </div>
 
                     <!-- Message (full width) -->
                     <div class="form-group-premium full-width">
                         <label for="booking-message"><span class="label-icon"></span> Message</label>
-                        <textarea id="booking-message" name="guest_message" rows="2"
+                        <textarea id="booking-message" name="guest_message" rows="2" maxlength="3000"
                                   placeholder="Special requests or dietary needs..."
                                   class="dark-input"></textarea>
                     </div>
 
                 </div>
-                <button type="submit" class="btn-orange" id="booking-submit-btn">Confirm Reservation</button>
+                <div style="position:absolute;left:-10000px" aria-hidden="true"><label>Leave empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+                <p id="booking-status" role="status" aria-live="polite"></p>
+                <button type="submit" class="btn-orange" id="booking-submit-btn">Request a Table</button>
+                <p>Your booking is confirmed only when Bambu contacts you.</p>
             </form>
         </div>
     </div>
