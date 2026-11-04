@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (dateInput && timeSelect) {
         // Prevent past dates
-        const today = new Date().toISOString().split('T')[0];
+        const today = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Dublin',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
         dateInput.min = today;
 
         dateInput.addEventListener('change', function() {
@@ -125,87 +125,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ============================================================
-    // EMAILJS SETUP — Replace the 3 values below after signup
-    // Step 1: Go to https://www.emailjs.com and create a free account
-    // Step 2: Add Gmail service → copy "Service ID" → paste below
-    // Step 3: Create email template → copy "Template ID" → paste below
-    // Step 4: Go to Account → copy "Public Key" → paste below
-    // ============================================================
-    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
-    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';    // e.g. 'aBcDeFgHiJkLmNoP'
-
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-    }
-
-    // Handle form submission — sends email to bamburestaurant2012@gmail.com
     const form = document.getElementById('premium-booking-form');
     if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const date    = document.getElementById('booking-date')?.value || '';
-            const time    = document.getElementById('booking-time')?.value || '';
-            const guests  = document.getElementById('booking-guests')?.value || '';
-            const name    = form.querySelector('[name="guest_name"]')?.value || '';
-            const phone   = form.querySelector('[name="guest_phone"]')?.value || '';
-            const email   = form.querySelector('[name="guest_email"]')?.value || '';
-            const message = form.querySelector('[name="guest_message"]')?.value || '';
-
-            if (!time) {
-                alert('Please select a date first to see available times.');
-                return;
-            }
-
-            submitBtn.innerHTML = 'SENDING...';
-            submitBtn.disabled = true;
-
-            const templateParams = {
-                to_email:     'bamburestaurant2012@gmail.com',
-                guest_name:   name,
-                guest_email:  email,
-                guest_phone:  phone,
-                booking_date: date,
-                booking_time: time,
-                guests:       guests,
-                message:      message || 'None',
-            };
-
-            // If EmailJS is not configured yet, fall back to WhatsApp
-            if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
-                const waText = encodeURIComponent(
-                    `🍽️ *New Table Reservation — Bambu Restaurant*\n\n` +
-                    `👤 Name: ${name}\n📅 Date: ${date}\n🕐 Time: ${time}\n` +
-                    `👥 Guests: ${guests}\n📞 Phone: ${phone}\n📧 Email: ${email}\n` +
-                    `💬 Notes: ${message || 'None'}`
-                );
-                window.open(`https://wa.me/35361217661?text=${waText}`, '_blank');
-                submitBtn.innerHTML = 'Confirm Reservation';
-                submitBtn.disabled = false;
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!form.reportValidity()) return;
+            const button = form.querySelector('[type="submit"]');
+            const status = document.getElementById('booking-status');
+            button.disabled = true;
+            button.textContent = 'Sending request…';
+            status.textContent = '';
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 45000);
+            try {
+                const endpoint = window.bambuBooking?.ajaxUrl;
+                if (!endpoint) throw new Error('Booking is unavailable. Please call +353 61 217 661.');
+                const tokenResponse = await fetch(endpoint + '?action=bambu_booking_token', {credentials:'same-origin',cache:'no-store',signal:controller.signal});
+                const token = await tokenResponse.json();
+                if (!token.success) throw new Error('Could not start booking. Please retry.');
+                const data = new FormData(form);
+                data.set('action','bambu_booking');
+                data.set('nonce',token.data.nonce);
+                const response = await fetch(endpoint, {method:'POST',credentials:'same-origin',body:data,signal:controller.signal});
+                const result = await response.json();
+                if (!result.success) throw new Error(result.data?.message || 'Could not send your request. Please retry or call us.');
+                status.textContent = result.data.message;
                 form.reset();
                 document.getElementById('booking-time').innerHTML = '<option value="" disabled selected>Select a Date First</option>';
-                modal.classList.remove('show');
-                return;
+            } catch(error) {
+                status.textContent = error.name === 'AbortError'
+                    ? 'We could not verify delivery. Please call +353 61 217 661 before submitting again.'
+                    : (error.message || 'Connection problem. Please call +353 61 217 661.');
+            } finally {
+                clearTimeout(timeout);
+                button.disabled = false;
+                button.textContent = 'Request a Table';
             }
-
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(() => {
-                    submitBtn.innerHTML = 'Confirm Reservation';
-                    submitBtn.disabled = false;
-                    form.reset();
-                    document.getElementById('booking-time').innerHTML = '<option value="" disabled selected>Select a Date First</option>';
-                    modal.classList.remove('show');
-                    alert('✅ Reservation sent! Bambu Restaurant will confirm shortly.');
-                })
-                .catch((err) => {
-                    console.error('EmailJS error:', err);
-                    submitBtn.innerHTML = 'Confirm Reservation';
-                    submitBtn.disabled = false;
-                    alert('❌ Could not send email. Please call us directly: +353 61 217 661');
-                });
         });
     }
 

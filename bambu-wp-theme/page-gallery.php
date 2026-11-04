@@ -126,7 +126,7 @@ $t = get_template_directory_uri();
             <h2 id="gallery-cta-title">Come and experience<br><em>Bambu for yourself.</em></h2>
             <div class="gallery-cta-actions">
                 <a href="#" class="btn-solid btn-plain btn-book">BOOK A TABLE</a>
-                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="btn-text">Order online &rarr;</a>
+                <a href="https://food-hub.ie/limerick/bambu-restaurant/4204725/ordernow" target="_blank" rel="noopener" class="btn-text">Order online &rarr;</a>
             </div>
         </section>
     </main>

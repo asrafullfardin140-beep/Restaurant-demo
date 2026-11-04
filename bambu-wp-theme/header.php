@@ -11,8 +11,8 @@
         : '/assets/anim-1.webp';
     ?>
     <link rel="preload" href="<?php echo esc_url( get_template_directory_uri() . $bambu_preload_image ); ?>" as="image" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/css/site-pages.css">
 <?php wp_head(); ?>
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/css/site-pages.css">
 </head>
 <body <?php body_class(); ?>>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/site-pages.js"></script>
@@ -59,7 +59,7 @@ $t = get_template_directory_uri();
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
                 </a>
-                <a href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener" class="mobile-icon-btn order-btn" aria-label="Order online">
+                <a href="https://food-hub.ie/limerick/bambu-restaurant/4204725/ordernow" target="_blank" rel="noopener" class="mobile-icon-btn order-btn" aria-label="Order online">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -69,7 +69,7 @@ $t = get_template_directory_uri();
             </div>
 
             <!-- Desktop navigation links -->
-            <div class="nav-links"><a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">Our Story</a><a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">Menu</a><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">Gallery</a><a class="desktop-order" href="https://bambulimerick.ie/order-now" target="_blank" rel="noopener">Order Now</a><a class="desktop-book btn-book" href="#">Book a Table</a></div>
+            <div class="nav-links"><a href="<?php echo esc_url( home_url( '/our-story/' ) ); ?>">Our Story</a><a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">Menu</a><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">Gallery</a><a class="desktop-order" href="https://food-hub.ie/limerick/bambu-restaurant/4204725/ordernow" target="_blank" rel="noopener">Order Now</a><a class="desktop-book btn-book" href="#">Book a Table</a></div>
 
             <!-- Mobile dropdown navigation -->
             <div class="mobile-nav-menu" id="mobile-nav-menu">
