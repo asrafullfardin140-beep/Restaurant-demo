@@ -113,7 +113,7 @@ $t = get_template_directory_uri();
                 <div style="position:absolute;left:-10000px" aria-hidden="true"><label>Leave empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
                 <p id="booking-status" role="status" aria-live="polite"></p>
                 <button type="submit" class="btn-orange" id="booking-submit-btn">Request a Table</button>
-                <p>Your booking is confirmed only when Bambu contacts you.</p>
+                <p>You'll get an email now, and another once Bambu confirms your table.</p>
             </form>
         </div>
     </div>
