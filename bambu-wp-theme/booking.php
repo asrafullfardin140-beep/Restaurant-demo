@@ -62,6 +62,40 @@ function bambu_submit_booking() {
         wp_send_json_error(array('message'=>'Too many requests. Please wait 15 minutes or call +353 61 217 661.'),429);
     }
     set_transient($key,$attempts+1,15*MINUTE_IN_SECONDS);
+    // Preferred path: save the request in the Five Star Restaurant Reservations
+    // plugin (free). The plugin then emails the guest "waiting to be confirmed",
+    // emails the restaurant with Confirm / Reject links, and emails the guest
+    // again once staff confirm or reject it.
+    if ( class_exists( 'rtbBooking' ) ) {
+        if ( '20+' === $guests ) {
+            $notes = trim( 'Large group: more than 20 guests. ' . $notes );
+        }
+        $_POST['action']      = 'booking_request';
+        $_POST['rtb-date']    = $date->format( 'Y-m-d' );
+        $_POST['rtb-time']    = $date->format( 'H:i' );
+        $_POST['rtb-party']   = '20+' === $guests ? 20 : (int) $guests;
+        $_POST['rtb-name']    = $name;
+        $_POST['rtb-email']   = $email;
+        $_POST['rtb-phone']   = $phone;
+        $_POST['rtb-message'] = $notes;
+
+        $booking = new rtbBooking();
+        $booking->insert_booking();
+
+        if ( ! empty( $booking->request_inserted ) ) {
+            wp_send_json_success( array( 'message' => 'Booking request sent — awaiting confirmation. Check your email: Bambu will confirm your table shortly.' ) );
+        }
+
+        $messages = array();
+        foreach ( (array) $booking->validation_errors as $error ) {
+            if ( ! empty( $error['message'] ) ) {
+                $messages[] = wp_strip_all_tags( $error['message'] );
+            }
+        }
+        wp_send_json_error( array( 'message' => $messages ? implode( ' ', array_unique( $messages ) ) : 'We could not save your request. Please retry or call +353 61 217 661.' ), 400 );
+    }
+
+    // Fallback if the plugin is ever deactivated: plain email to the restaurant.
     $body = "New booking request — confirmation required\n\nName: ".$name."\nEmail: ".$email."\nPhone: ".$phone.
         "\nDate: ".$date->format('d F Y')."\nTime (Ireland): ".$date->format('H:i')."\nGuests: ".$guests."\n\nNotes:\n".($notes ?: 'None').
         "\n\nPlease contact the guest to confirm availability. This is a request, not a confirmed reservation.";
